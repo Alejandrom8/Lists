@@ -1,0 +1,164 @@
+.registZone{
+    width:100%;
+    height:115vh;
+    /* background-image:linear-gradient(to right, #fff, #ddd); */
+    display:flex;
+    align-items:center;
+    background-image:url('../../img/vector1.jpg');
+    background-color:#333;
+    background-repeat:no-repeat;
+    background-size:cover;
+}
+.registZone .box{
+    margin:0 auto;
+    width:90%;
+    height:90%;
+    /* background-color:#f8cc45; */
+    /* background: linear-gradient(to bottom, #f8cc45 0%,#f8cc45 80%,#f8cc45 80%,#a65d00 2%,#a65d00 100%); */
+    background-color:#151726;
+    box-shadow:4px 4px 10px rgba(0,0,0,0.4);
+    border-radius:20px;
+    margin-top:5%;
+}
+.menu{
+    background-color:rgba(30, 30, 30, 0.6); 
+    border-bottom:1px solid #333;
+    /* background:linear-gradient(to left, #a8ffd9, #0071a6); */
+    /* background:linear-gradient(to left, #ffb72f, #ff2f2f); */
+}
+.menu .bloque ul li,a{
+    color:#eee;
+}
+.box{
+    display:flex;
+    align-items:center;
+    color:#eee;
+}
+.box .all{
+    margin:0 auto;
+    margin-left:3%;
+    margin-right:3%;
+    width:94%;
+    height:85%;
+    text-align:center;
+}
+.all h1, h2, h3{
+    font-family:'arima';
+    font-weight:bold;
+    margin:2%;
+}
+.all label{
+    font-family:'roboto black';
+}
+.all .btn{
+    background-color:#565c88;
+}
+#newRecord .col-sm-4{
+    padding-left:20px;
+    padding-right:20px;
+}
+#newRecord label{
+    float:left;
+}
+#newRecord input.form-control,select.form-control{
+    border:0;
+    border-bottom:1px solid #52ff99;
+    background-color:transparent;
+    color:#fff;
+}
+/* #newRecord input.form-control:hover{
+    box-shadow:none;
+} */
+#newRecord input.form-control:not( :hover ),select.form-control:not( :hover ){ 
+    box-shadow:none;    
+}
+#newRecord select.form-control:click{
+    background-color:transparent;
+}
+.row{
+    padding-left:3%;
+    padding-right:3%;
+}
+.row .foto{
+    height:70vh;
+    display:flex;
+    align-items:center;
+    margin-top:-6%;
+}
+.foto .foto-cont{
+    margin:0 auto;
+    width:100%;
+    height:95%;
+    /* background:linear-gradient(to right, #ff452f, #ffd12f); */
+    display:flex;
+    align-items:center;
+    font-family:'roboto light';
+    color:#fff;
+    border-radius:10px;
+}
+.foto-cont-2{
+    margin:0 auto;
+    width:90%;
+    height:70%;
+}
+#preview {
+    margin:0 auto;
+    width:100%;
+    height:70%;
+    border-radius:50px;
+    overflow:hidden;
+    background-color:#696fa0;
+    /* border:5px dashed #636a99; */
+    background-image:url('../../img/ardilla.png');
+    background-size: cover;
+}
+
+#preview img {
+    width:100%;
+    height:100%;
+}
+.custom-file-label{
+    width:100%;
+    text-align:left;
+}
+@media only screen and (max-width: 1024px){
+    .registZone .box{
+        width:90%;
+    }
+    .dropzone{
+        width:100%;
+    }
+}
+@media only screen and (max-width:800px){
+    .registZone{
+        height:75vh;
+    }
+}
+@media only screen and (max-width: 659px){
+    .registZone .box{
+        width:95%;
+        height:90%;
+    }
+    .registZone{
+        height:250vh;
+    }
+    .dz-zone{
+        height:90%;
+    }
+    .col-sm-8{
+        margin-top:20%;
+    }
+}
+@media only screen and (max-height: 480px){
+    .registZone{
+        height:230vh;
+    }
+}
+@media only screen and (max-height: 360px) and (max-width:760px){
+    .registZone{
+        height:230vh;
+    }
+    .registZone .box{
+        width:100%;
+    }
+}

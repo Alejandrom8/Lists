@@ -1,0 +1,118 @@
+.slider{
+    width:100%;
+    height:80vh;
+    background-repeat:no-repeat;
+    background-attachment: fixed !important;
+    background-size:cover;
+    display: flex;
+    align-items: center;
+}
+.row{
+    width:99%;
+    height:40%;
+    margin:0 auto;
+}
+.anuncio{
+    margin:0 auto;
+    width:100%;
+    height:80%;
+    bottom:0;
+    text-align: center;
+}
+.anuncio h1{
+    font-family: 'roboto bold';
+    font-size:5rem;
+    font-weight:bold;
+    color:#333;
+}
+.anuncio p{font-family:'arima';}
+.slider .row .col-sm-1{display:flex;align-items:center;}
+.boton-slider{
+    margin:0 auto;
+    width:50%;
+    height:30%;
+    background-color: rgba(130, 130, 230, 0.5);
+    cursor:pointer;
+    -webkit-transition:all 0.5s;
+    border-radius:15px;
+}
+#left{
+    border-bottom-left-radius: 50%;
+    border-top-left-radius: 50%;
+}
+#right{
+    border-bottom-right-radius: 50%;
+    border-top-right-radius: 50%;
+}
+#display{
+    display:flex;
+    align-items: center;
+}
+.boton-slider:hover{
+    background-color: rgba(200, 200, 200, 0.6);
+    -webkit-transition:all 0.5s;
+}
+#carrusel{
+    width:100%;
+    height:70%;
+    display:flex;
+    align-items: center;
+    background-color:#eee;
+}
+.swiper-container {
+    margin:0 auto;
+    width:95%;
+    height:90%;
+}
+.swiper-pagination{
+    bottom:5px;
+}
+  .swiper-slide {
+    font-size: 18px;
+    background: #fff;
+    display:flex;
+    align-items: center;
+    box-shadow: 0 0 0 transparent;
+    -webkit-transition: all 0.5s;
+    border-radius:5px;
+    overflow: hidden;
+  }
+  .swiper-slide:hover{
+      box-shadow:4px 4px 10px rgba(0,0,0,0.4);
+      -webkit-transition: all 0.5s;
+  }
+  .swiper-slide .cont{
+      width:100%;
+      height:100%;
+      margin:0 auto;
+  }
+  .bloque-image{
+      width:100%;
+      height:55%;
+      overflow: hidden;
+  }
+  .text{
+      width:100%;
+      padding:10%;
+      text-align: left;
+  }
+  .text h3{
+      text-align:center;
+      font-family:'roboto bold';
+  }
+  .text p {
+      font-family: 'roboto';
+      font-size:16.5px;
+      text-rendering: optimizeLegibility;
+      text-align: center;
+  }
+  .bloque-image img{
+    width:100%;
+    height:100%;
+    -webkit-transition: all 0.8s;
+  }
+  .bloque-image img:hover{
+      width:108%;
+      height:108%;
+      -webkit-transition: all 0.8s;
+  }

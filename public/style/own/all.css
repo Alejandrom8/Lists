@@ -1,0 +1,123 @@
+@import "fuentes.css";
+*{margin:0;padding:0;}
+.webpage{width:100%;display:block;}
+a:hover{
+    text-decoration: none;
+}
+#menu{
+    width:100%;
+    height:50px;
+    position:fixed;
+    display:flex;
+    align-items:center;
+    z-index:100;
+    -webkit-transition:all 0.5s;
+}
+.container-own{
+    opacity: 1;
+    -webkit-transition:all 0.3s;
+}
+#menu .nav-menu{
+    width:95%;
+    height:90%;
+    margin:0 auto;
+    align-items: stretch;
+}
+#menu .nav-menu .row{
+    width:99%;
+    height:100%;
+}
+#menu .nav-menu .row .bloque{
+    width:50%;
+    height:100%;
+    font-family:'roboto bold';
+}
+.bloque ul li{
+    list-style:none;
+    float:left;
+}
+.bloque ul li,a{
+    color:#fff;
+}
+.bloque ul li a{
+    background-color:transparent;
+    border-radius:15px;
+    padding:0.2em;
+    padding-left:0.5em;
+    padding-right:0.5em;
+}
+.bloque ul li a:hover{
+    text-decoration: none;
+    color:#333;
+    background-color:#fff;
+}
+.left ul{
+    display:flex;
+    align-items:center;
+}
+.left ul li{
+    margin-left:2%;
+    margin-right: 2%;
+}
+.left ul li img{
+    padding:5px;
+    width:40px;
+    height: 40px;
+}
+.right{
+    display:block;
+}
+.right ul{
+    width:100%;
+    height:100%;
+    display:flex;
+    align-items: center;
+}
+.right ul li{
+    width:25%;
+    text-align: center;
+    display: inline-block;
+}
+.right ul li a{
+    margin:0;
+}
+.rightMovile{
+    display:none;
+}
+.bloque.rightMovile button{
+    float:right;
+    margin:2%;
+    margin-top:4%;
+    padding:2px;
+    display:flex;
+    align-items: center;
+}
+.bloque.rightMovile button i{
+    margin:0 auto;
+}
+@media only screen and (max-width: 759px){
+    .right{
+        display:none;
+    }
+    .rightMovile{
+        display:block;
+    }
+}
+#menumovile{
+    position:absolute;
+    right:-220vh;
+    width:100%;
+    height:50vh;
+    background-color:rgba(30, 30, 30, 0.6);
+    margin-top:50px;
+    -webkit-transition:all 0.3s;
+    text-align: center;
+}
+#menumovile tr td h4 a:hover{
+    color:antiquewhite;
+}
+@media only screen and (max-height: 480px){
+    #menumovile{
+        height:90vh;
+    }
+}

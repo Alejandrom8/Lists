@@ -1,0 +1,28 @@
+@font-face{
+    src: url('../../tipography/Roboto/Roboto-Regular.ttf');
+    font-family: 'roboto';
+}
+@font-face{
+    src: url('../../tipography/Roboto/Roboto-Light.ttf');
+    font-family: 'roboto light';
+}
+@font-face{
+    src: url('../../tipography/Roboto/Roboto-Bold.ttf');
+    font-family: 'roboto bold';
+}
+@font-face{
+    src: url('../../tipography/Roboto/Roboto-Medium.ttf');
+    font-family: 'roboto medium';
+}
+@font-face{
+    src: url('../../tipography/Roboto/Roboto-Black.ttf');
+    font-family: 'roboto black';
+}
+@font-face{
+    src: url('../../tipography/SinaNova.woff');
+    font-family: 'sinaNova';
+}
+@font-face{
+    src: url('../../tipography/ArimaKoshi-Regular.otf');
+    font-family: 'arima';
+}
