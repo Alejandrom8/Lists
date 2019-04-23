@@ -14,7 +14,10 @@ class recordModel extends Model{
             while($row = $searchState->fetch(PDO::FETCH_ASSOC)){
                 return [true, 'success'];
             }
+
+            $searchState->closeCursor();
             return [false, 'success'];
+            
         }catch(PDOException $error){
             return [false, 'error', $error];
         }
@@ -26,7 +29,6 @@ class recordModel extends Model{
         $registro = $data;
         try{
             $ruta = $registro->ruta ? $registro->ruta : "";
-            // return [false, 'error', exec('cd structure/models && ls')];
             $insert = "INSERT INTO " . constant('TABLA_REGISTRO') . "(id, nombre, apodo, email, pass, cumple, genero, foto_ruta, fecha_registro) 
                        VALUE(
                            0,
@@ -41,7 +43,7 @@ class recordModel extends Model{
                        )";
             $execInsert = $this->con->prepare($insert);
             $execInsert->execute();
-
+            $execInsert->closeCursor();
             if($registro->ruta){
                 move_uploaded_file($registro->foto['tmp_name'], $registro->ruta);
             }

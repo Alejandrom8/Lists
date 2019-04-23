@@ -3,15 +3,13 @@ $(document).ready(function(){
     $("#newRecord").on('submit', function(e){
         e.preventDefault();
         let cont = $(this);
-        // let formData = new FormData();
-        // formData.append('file', $('input[type=file]')[0].files[0]);}
         let data = getFiles();
         data = getFormData("newRecord",data);
         let boton = $("boton-enviar");
         $.ajax({
             type: cont.attr("method"),
             url: cont.attr("action"),
-            dataType: 'HTML',
+            dataType: 'JSON',
             data: data,
             cache: false,
             contentType: false,
@@ -25,7 +23,17 @@ $(document).ready(function(){
                 boton.val("Registrar");
             },
             success: function(data){
-                alert(data);
+                let datos = JSON.parse(JSON.stringify(data));
+                let estado = datos[0];
+                let mensaje = datos[1];
+
+                if(estado){
+                    let where = datos[2];
+                    window.alert(mensaje);
+                    window.location = where;
+                }else{
+                    window.alert(mensaje);
+                }
             },
             error: function(){
                 console.log("error");

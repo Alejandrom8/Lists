@@ -8,6 +8,7 @@
     background-color:#333;
     background-repeat:no-repeat;
     background-size:cover;
+    overflow: hidden;
 }
 .registZone .box{
     margin:0 auto;
@@ -30,15 +31,14 @@
     color:#eee;
 }
 .box{
-    display:flex;
-    align-items:center;
+    /*display:flex;
+    align-items:center;*/
     color:#eee;
 }
 .box .all{
-    margin:0 auto;
-    margin-left:3%;
-    margin-right:3%;
-    width:94%;
+    /*margin:0 auto;*/
+    margin:0;
+    width:100%;
     height:85%;
     text-align:center;
 }
@@ -76,8 +76,10 @@
     background-color:transparent;
 }
 .row{
+    width:100%;
     padding-left:3%;
     padding-right:3%;
+    margin:0;
 }
 .row .foto{
     height:70vh;
@@ -89,7 +91,6 @@
     margin:0 auto;
     width:100%;
     height:95%;
-    /* background:linear-gradient(to right, #ff452f, #ffd12f); */
     display:flex;
     align-items:center;
     font-family:'roboto light';
@@ -98,18 +99,19 @@
 }
 .foto-cont-2{
     margin:0 auto;
-    width:90%;
-    height:70%;
+    width:100%;
+    height:75%;
 }
 #preview {
     margin:0 auto;
     width:100%;
     height:70%;
-    border-radius:50px;
+    border-top-left-radius:50px;
+    border-top-right-radius:50px;
     overflow:hidden;
     background-color:#696fa0;
     /* border:5px dashed #636a99; */
-    background-image:url('../../img/ardilla.png');
+    /*background-image:url('../../img/ardilla.png');*/
     background-size: cover;
 }
 

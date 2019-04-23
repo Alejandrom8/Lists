@@ -10,8 +10,8 @@ class Anfree{
 
     public function __construct(){
 
-        $this->user = $_SESSION['ana'];
-        $this->password = $_SESSION['ukelele'];
+        $this->user = $_SESSION['nombre'];
+        $this->password = $_SESSION['email'];
 
         $url = isset($_GET['url']) ? $_GET['url'] : null;
         $url = rtrim($url, '/');
@@ -64,7 +64,6 @@ class Anfree{
                         alert('acceso denegado');
                         window.location = '". constant('URL') ."';
                       </script>");
-                die();
             }
         }
     }

@@ -53,7 +53,7 @@ function show(){
     $(document).ready(function(){
         if(!estado){
             $("#menumovile").css({"right":"0"});
-            $(".container-own").css({"opacity": "0.3"});
+            $(".container-own").css({"opacity": "0.9"});
             estado = true;
         }else{
             $("#menumovile").css({"right":"-220vh"});

@@ -14,4 +14,6 @@ define('MAX_FOTO_SIZE', 50000000);//6.25 MB
 
 //TABLAS
 define('TABLA_REGISTRO', 'registros');
+//carpeta donde se guardaran las fotos
+define('CARPETA_FOTOS', $_SERVER['DOCUMENT_ROOT'] . '/intranet/uploads/');
 ?>

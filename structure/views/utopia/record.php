@@ -12,7 +12,9 @@
             <section class="registZone">
                 <div class="box">
                     <div class="all">
-                        <h1>Registro</h1>
+                        <div class="col-sm-12" style="background-color:#3e457d;padding:4%;boder-bottom:2px solid #3e457d;">
+                            <h1>Registro</h1>
+                        </div>
                         <br>
                         <div class="row">
                                 <form action="<?php echo constant('URL');?>record/newRecord" method="POST" id="newRecord" enctype="multipart/form-data">
@@ -20,7 +22,7 @@
                                     <div class="col-sm-4 foto">
                                         <div class="foto-cont">
                                             <div  class="foto-cont-2">
-                                                <h3>Foto de perfil</h3>
+                                                <h4>Foto de perfil</h4>
                                                 <label id="preview" for="file"></label>
                                                 <br>
                                                 <input type="hidden" name="MAX_FILE_SIZE" value="<?php echo constant('MAX_FOTO_SIZE');?>" />
@@ -85,7 +87,7 @@
                 </div>
             </section>
         </div>
-        <?php include_once 'structure/views/footer.php'; ?>
+        <!--<?php //include_once 'structure/views/footer.php'; ?>-->
     </div>
 </body>
 <script src="<?php echo constant('URL');?>public/recordAjax.js"></script>
