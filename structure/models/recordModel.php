@@ -1,5 +1,6 @@
 <?php
 include_once 'structure/models/registro.php';
+
 class recordModel extends Model{
     public function __construct(){
         parent::__construct();

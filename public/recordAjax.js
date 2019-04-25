@@ -1,48 +1,47 @@
 $(document).ready(function(){
 
-    $("#newRecord").on('submit', function(e){
-        e.preventDefault();
-        let cont = $(this);
-        let data = getFiles();
-        data = getFormData("newRecord",data);
-        let boton = $("boton-enviar");
-        $.ajax({
-            type: cont.attr("method"),
-            url: cont.attr("action"),
-            dataType: 'JSON',
-            data: data,
-            cache: false,
-            contentType: false,
-            processData: false,
-            beforeSend: function(){
-                boton.attr("disabled", "disabled");
-                boton.val("Registrando...");
-            },
-            complete: function(){
-                boton.removeAttr("disabled");
-                boton.val("Registrar");
-            },
-            success: function(data){
-                let datos = JSON.parse(JSON.stringify(data));
-                let estado = datos[0];
-                let mensaje = datos[1];
+        $("#newRecord").on('submit', function(e){
+            e.preventDefault();
+            let cont = $(this);
+            let data = getFiles();
+            data = getFormData("newRecord",data);
+            let boton = $("boton-enviar");
+            $.ajax({
+                type: cont.attr("method"),
+                url: cont.attr("action"),
+                dataType: 'JSON',
+                data: data,
+                cache: false,
+                contentType: false,
+                processData: false,
+                beforeSend: function(){
+                    boton.attr("disabled", "disabled");
+                    boton.val("Registrando...");
+                },
+                complete: function(){
+                    boton.removeAttr("disabled");
+                    boton.val("Registrar");
+                },
+                success: function(data){
+                    let datos = JSON.parse(JSON.stringify(data));
+                    let estado = datos[0];
+                    let mensaje = datos[1];
 
-                if(estado){
-                    let where = datos[2];
-                    window.alert(mensaje);
-                    window.location = where;
-                }else{
-                    window.alert(mensaje);
-                }
-            },
-            error: function(){
-                console.log("error");
-            } 
+                    if(estado){
+                        let where = datos[2];
+                        window.alert(mensaje);
+                        window.location = where;
+                    }else{
+                        window.alert(mensaje);
+                    }
+                },
+                error: function(){
+                    console.log("error");
+                } 
+            });
+            return false;
         });
-        return false;
-    });
 });
-
 function getFiles(){
 	var idFiles=document.getElementById("file");
 	// Obtenemos el listado de archivos en un array

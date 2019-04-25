@@ -12,17 +12,16 @@
             <section class="registZone">
                 <div class="box">
                     <div class="all">
-                        <div class="col-sm-12" style="background-color:#3e457d;padding:4%;boder-bottom:2px solid #3e457d;">
+                        <div class="col-sm-12" style="background-color:#5400c4;padding:4%;boder-bottom:2px solid #3e457d;">
                             <h1>Registro</h1>
                         </div>
                         <br>
                         <div class="row">
-                                <form action="<?php echo constant('URL');?>record/newRecord" method="POST" id="newRecord" enctype="multipart/form-data">
-                                    <div class="row">
-                                    <div class="col-sm-4 foto">
+                            <form action="<?php echo constant('URL');?>record/newRecord" method="POST" id="newRecord" enctype="multipart/form-data">
+                                    <div class="col-sm-12 foto">
                                         <div class="foto-cont">
                                             <div  class="foto-cont-2">
-                                                <h4>Foto de perfil</h4>
+                                                <h3>Foto de perfil</h3>
                                                 <label id="preview" for="file"></label>
                                                 <br>
                                                 <input type="hidden" name="MAX_FILE_SIZE" value="<?php echo constant('MAX_FOTO_SIZE');?>" />
@@ -35,7 +34,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-sm-4">
+                                <div class="row">
+                                    <div class="col-sm-6">
                                         <h3>Datos personales</h3>
                                         <br>
                                         <div class="form-group">
@@ -43,8 +43,8 @@
                                             <input type="text" name="nombre" id="nombre" class="form-control" placeholder="escribe tu nombre" required>
                                         </div>
                                         <div class="form-group">
-                                            <label for="age">Cumpleaños</label>
-                                            <input type="date" name="age" id="age" class="form-control" placeholder="" required>
+                                            <label for="email">Correo Electrónico</label>
+                                            <input type="email" name="email" id="email" class="form-control" placeholder="ukelele@ejemplo.com" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="pass">Contraseña</label>
@@ -55,12 +55,12 @@
                                             <input type="password" name="passre" id="passre" class="form-control" required>
                                         </div>
                                     </div>
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-6">
                                         <h3>Algúnos datos más</h3>
                                         <br>
                                         <div class="form-group">
-                                            <label for="email">Correo Electrónico</label>
-                                            <input type="email" name="email" id="email" class="form-control" placeholder="ukelele@ejemplo.com" required>
+                                            <label for="age">Cumpleaños</label>
+                                            <input type="date" name="age" id="age" class="form-control" placeholder="" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="genero">Género</label>
@@ -75,13 +75,16 @@
                                             <label for="apodo">Apodo <span style="color:#777;font-family:'roboto';">(identificador)</span></label>
                                             <input type="text" name="apodo" id="apodo" class="form-control" required>
                                         </div>
-                                        <br>
-                                        <div class="form-group">
+                                    </div>
+                                    <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div>
+                                            <br>
                                             <input type="submit" class="btn btn-primary" id="boton-enviar" value="Registrar datos">
                                         </div>
                                     </div>
-                                    </div>
-                                </form>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>

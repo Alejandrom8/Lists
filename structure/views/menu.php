@@ -14,7 +14,7 @@
                     <li><a href="<?php echo constant('URL'); ?>">Inicio</a></li>
                     <li><a href="#">Acerca de</a></li>
                     <li><a href="<?php echo constant('URL'); ?>record">Registrate</a></li>
-                    <li><a href="#">Login</a></li>
+                    <li><a href="<?php echo constant('URL'); ?>login">Login</a></li>
                 </ul>
             </div>
             <div class="bloque rightMovile">
@@ -38,7 +38,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <h4><a href="#">Login</a></h4>
+                                <h4><a href="<?php echo constant('URL'); ?>login">Login</a></h4>
                             </td>
                         </tr>
                     </table>

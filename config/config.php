@@ -3,7 +3,7 @@
 setlocale(LC_TIME, "es_MX.UTF-8");
 date_default_timezone_set("America/Mexico_City");
 //URL
-define('URL', 'http://192.168.1.71/social_network/');
+define('URL', 'http://localhost/social_network/');
 //connection
 define('USER', 'root');
 define('PASSWORD', 'Alejandrom8');

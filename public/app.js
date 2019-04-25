@@ -1,7 +1,8 @@
-function Anuncio(titulo, texto, background, color){
+function Anuncio(titulo, font_color, texto, background, color){
         $(document).ready(function(){
             let display = $("#display");
             let cont = $("#slider");
+            cont.css({"color": font_color});
             if(background != null){
                 cont.css({"background-image": "url(" + background + ")", "background-color": color});
             }else{
@@ -18,11 +19,14 @@ function Anuncio(titulo, texto, background, color){
 let anuncios = JSON.parse(JSON.stringify(contenido));
 
 function nuevoAnuncio(index){
+    //propiedades del texto
     let titulo = anuncios[index].titulo.texto;
     let texto = anuncios[index].texto;
+    let font_color = anuncios[index].titulo.font_color;
+    //propiedades del background
     let background = anuncios[index].background.image;
     let color = anuncios[index].background.color;
-    Anuncio(titulo, texto, background, color);
+    Anuncio(titulo, font_color, texto, background, color);
 }
 
 nuevoAnuncio(0);

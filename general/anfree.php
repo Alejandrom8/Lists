@@ -25,7 +25,7 @@ class Anfree{
             $WelcomePage->render();
             return false;
         }else{
-            $access = $this->u != 'record' ? $this->access($this->user, $this->password) : true;
+            $access = $this->u != 'record' && $this->u != 'login' ? $this->access($this->user, $this->password) : true;
 
             if($access){
                 $file_of_controller = 'structure/controllers/' . $this->u . '.php';

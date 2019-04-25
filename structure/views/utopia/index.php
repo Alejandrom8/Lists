@@ -24,7 +24,7 @@
                     </div>
                 </div>
             </header>
-            <section style="height:100vh;">
+            <section class="after">
                 <section id="carrusel">
                     <div class="swiper-container">
                         <div class="swiper-wrapper" id="swip-app">
@@ -43,7 +43,7 @@
 <script src="<?php echo constant('URL'); ?>public/app.js"></script>
 <script>
     var swiper = new Swiper('.swiper-container', {
-      slidesPerView: 4,
+      slidesPerView: 3,
       spaceBetween: 30,
       freeMode: true,
       pagination: {

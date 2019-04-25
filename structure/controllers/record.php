@@ -11,18 +11,6 @@ class record extends Controller implements Render{
         $this->view->render("utopia/record");
     }
 
-    private static function desinfect($data){
-        /*  funcion para evaluar cada dato que entre al servidor
-        *  y quitar caracteres especiales para más seguridad
-        * @access public
-        * @param String,int,boolean,etc. $data dato al que se le quitaran caractres especiales
-        * @return $data dato sin caracteres especiales.
-        */
-        $data = stripslashes($data);
-        $data = htmlspecialchars($data);
-        return $data;
-    }
-
     public function newRecord(){
         
         $status = [false, 'Ningun proceso se llevo a cabo'];
@@ -30,7 +18,7 @@ class record extends Controller implements Render{
         $registro = new NewRecordObject();
         $registro->nombre = $this->desinfect($_REQUEST['nombre']);
         $registro->cumple = $this->desinfect($_REQUEST['age']);
-        $registro->pass = hash('sha512', $this->desinfect($_REQUEST['password']));
+        $registro->pass = password_hash($this->desinfect($_REQUEST["password"]),PASSWORD_DEFAULT);
         $registro->email = $this->desinfect($_REQUEST['email']);
         $registro->genero = $this->desinfect($_REQUEST['genero']);
         $registro->apodo = $this->desinfect($_REQUEST['apodo']);
