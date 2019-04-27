@@ -5,24 +5,29 @@ class LoginModel extends Model{
         parent::__construct();
         $this->con = $this->conection->Connect();
     }
-    public function validar($nc, $pass){
+    public function validarNC($nc, $pass){
         try{
             $usuario = null;
-            $sql = "SELECT pass FROM registros WHERE nombre = '$nc' OR email = '$nc' LIMIT 1";
+            $sql = "SELECT nombre,email,pass FROM registros WHERE nombre = '$nc' OR email = '$nc' LIMIT 1";
             $sqlprepare = $this->con->prepare($sql);
             $sqlprepare->execute();
+
             while($row = $sqlprepare->fetch(PDO::FETCH_ASSOC)){
-                $usuario = $row['pass'];
+                $usuario = $row['email'];
+                $nombre = $row['nombre'];
+                $pre = $row['pass'];
             }
+
             if($usuario){
-                if(password_verify($pass, $usuario)){
-                    return [true, ''];
+                if($pass == $pre){
+                    return [true, "", [$nombre,$usuario]];
                 }else{
-                    return [false, 'contraseña incorrecta'];
+                    return [false, "Usuario o contraseña incorrecto"];
                 }
             }else{
-                return [false, 'Usuario o correo incorrecto'];
+                return [false, "Usuario o contraseña incorrecto"];
             }
+
         }catch(PDOException $e){
             return [false, $e];
         }

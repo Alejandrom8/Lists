@@ -9,9 +9,11 @@ class Respuesta{
     public $donde;
 }
 class Controller{
+
     public function __construct(){
         $this->view = new View();
     }
+    
     public function loadModel($model){
         $url_model = 'structure/models/' . $model . 'Model.php';
 
@@ -22,6 +24,7 @@ class Controller{
           $this->model = new $modelName();
         }
     }
+
     public function desinfect($data){
         /*  funcion para evaluar cada dato que entre al servidor
         *  y quitar caracteres especiales para más seguridad
@@ -33,6 +36,15 @@ class Controller{
         $data = stripslashes($data);
         $data = htmlspecialchars($data);
         return $data;
+    }
+
+    public function iniciarSesion($nombre, $email){
+        session_regenerate_id();
+        $_SESSION['REMOTE_ADDR'] = $_SERVER['REMOTE_ADDR'];
+        $_SESSION['HTTP_USER_AGENT'] = $_SERVER['HTTP_USER_AGENT'];
+        $_SESSION['nombre'] = $nombre;
+        $_SESSION['email'] = $email;
+        return true;
     }
 }
 ?>

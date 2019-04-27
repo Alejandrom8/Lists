@@ -6,7 +6,7 @@ $(document).ready(function(){
 
     $(window).scroll(function(){
         scroll = $(window).scrollTop();
-        if(scroll > height/4){
+        if(scroll > 0){
             if(!flag){
                 $("#menu").css({'background-color':'#333', 'color': "#fff"});
                 flag = true;

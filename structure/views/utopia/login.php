@@ -19,7 +19,7 @@
                             <form id="login" class="form" name="login" method="POST" action="<?php echo constant('URL'); ?>login/logear">
                                 <div class="form-group">
                                     <label for="nombre-correo">Nombre o email</label>
-                                    <input type="text" name="nombre-correo" id="nombre-correo" class="form-control">
+                                    <input type="text" name="nombre-correo" id="nombre-correo" class="form-control" placeholder="introduce tu nombre o email">
                                 </div>
                                 <div class="form-group">
                                     <label for="pass">Contraseña</label>

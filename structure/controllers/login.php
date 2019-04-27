@@ -1,27 +1,34 @@
 <?php 
 class Login extends Controller implements Render{
+
     public function __construct(){
         parent::__construct();
     }
+
     public function render(){
         $this->view->render('utopia/login');
     }
+
     public function logear(){
         $nombre_correo = $this->desinfect($_POST['nombre-correo']);
-        $pass = $this->desinfect($_POST['pass']);
+        $pass = hash("sha512", $this->desinfect($_POST['pass']));
         $status = new Respuesta();
 
-        $validar = $this->model->validar($nombre_correo, $pass);
-        $estado = $validar[0];
-        $mensaje = $validar[1];
+        $validarNC = $this->model->validarNC($nombre_correo, $pass);
+        $estado = $validarNC[0];
+        $mensaje = $validarNC[1];
+
         if($estado){
+            $respuesta = $validarNC[2];
             $status->estado = true;
             $status->mensaje = "Bienvenido";
-            $status->donde = constant('URL') . "home";
+            $status->donde = constant("URL") . "home";
+            $this->iniciarSesion($respuesta[0], $respuesta[1]);
         }else{
             $status->estado = false;
-            $status->mensaje = $pass;
+            $status->mensaje = $mensaje;
         }
+
         echo json_encode($status);
     }
 }

@@ -1,5 +1,3 @@
-<style>
-</style>
 <div id="menu" class="menu">
     <nav class="nav-menu">
         <div class="row">
@@ -11,10 +9,10 @@
             </div>
             <div class="bloque right">
                 <ul>
-                    <li><a href="<?php echo constant('URL'); ?>">Inicio</a></li>
-                    <li><a href="#">Acerca de</a></li>
-                    <li><a href="<?php echo constant('URL'); ?>record">Registrate</a></li>
-                    <li><a href="<?php echo constant('URL'); ?>login">Login</a></li>
+                    <li><a onclick="return canIChangeTheURL(this);" href="<?php echo constant('URL'); ?>">Inicio</a></li>
+                    <li><a onclick="return canIChangeTheURL(this);" href="#">Acerca de</a></li>
+                    <li><a onclick="return canIChangeTheURL(this);" href="<?php echo constant('URL'); ?>record">Registrate</a></li>
+                    <li><a onclick="return canIChangeTheURL(this);" href="<?php echo constant('URL'); ?>login">Login</a></li>
                 </ul>
             </div>
             <div class="bloque rightMovile">
@@ -61,5 +59,14 @@ function show(){
             estado = false;
         }
     });
+}
+let url = window.location;
+function canIChangeTheURL(link){
+    let urlDir = link.getAttribute("href");
+    if(url != urlDir){
+        window.location = urlDir;
+    }else{
+        return false;
+    }
 }
 </script>

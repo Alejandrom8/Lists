@@ -22,7 +22,7 @@ $(document).ready(function(){
                 let estado = respuesta.estado;
                 let mensaje = respuesta.mensaje;
                 if(estado){
-                    window.alert(mensaje);
+                    window.location = respuesta.donde;
                 }else{ 
                     $error = "<div class='alert alert-danger'>" + 
                                 "<strong>Error!</strong>" + 

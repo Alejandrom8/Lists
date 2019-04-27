@@ -18,7 +18,7 @@ class record extends Controller implements Render{
         $registro = new NewRecordObject();
         $registro->nombre = $this->desinfect($_REQUEST['nombre']);
         $registro->cumple = $this->desinfect($_REQUEST['age']);
-        $registro->pass = password_hash($this->desinfect($_REQUEST["password"]),PASSWORD_DEFAULT);
+        $registro->pass = hash('sha512', $this->desinfect($_REQUEST["pass"]));
         $registro->email = $this->desinfect($_REQUEST['email']);
         $registro->genero = $this->desinfect($_REQUEST['genero']);
         $registro->apodo = $this->desinfect($_REQUEST['apodo']);
@@ -33,6 +33,7 @@ class record extends Controller implements Render{
                 $buscar_nombre_existente = $this->model->buscar('nombre', constant('TABLA_REGISTRO'), 'nombre', $registro->nombre);
                 if(!$buscar_nombre_existente[0]){
                     if($buscar_nombre_existente[1] != 'error'){
+
                         //validando la foto
                         if($registro->foto != null){
                             if(in_array($registro->foto['type'], $this->formatosPermitidos)){
@@ -50,6 +51,7 @@ class record extends Controller implements Render{
                         }
                         
                         $estado_de_registro = $this->model->registrar($registro);
+
                         if($estado_de_registro[0]){
 
                             if($registro->genero == 0){
@@ -70,6 +72,7 @@ class record extends Controller implements Render{
                         }else{
                             $status = [false, $estado_de_registro[2]];
                         }
+                        
                     }else{
                         $status = [false, $buscar_nombre_existente[2]];
                     }
@@ -84,15 +87,6 @@ class record extends Controller implements Render{
         }
 
         echo json_encode($status);
-    }
-
-    private static function iniciarSesion($nombre, $email){
-        session_regenerate_id();
-        $_SESSION['REMOTE_ADDR'] = $_SERVER['REMOTE_ADDR'];
-        $_SESSION['HTTP_USER_AGENT'] = $_SERVER['HTTP_USER_AGENT'];
-        $_SESSION['nombre'] = $nombre;
-        $_SESSION['email'] = $email;
-        return true;
     }
 
     private static function enviarBienvenida(){
