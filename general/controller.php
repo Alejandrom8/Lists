@@ -38,12 +38,12 @@ class Controller{
         return $data;
     }
 
-    public function iniciarSesion($nombre, $email){
+    public function iniciarSesion($nombre, $id){
         session_regenerate_id();
         $_SESSION['REMOTE_ADDR'] = $_SERVER['REMOTE_ADDR'];
         $_SESSION['HTTP_USER_AGENT'] = $_SERVER['HTTP_USER_AGENT'];
         $_SESSION['nombre'] = $nombre;
-        $_SESSION['email'] = $email;
+        $_SESSION['idanfree'] = $id;
         return true;
     }
 }

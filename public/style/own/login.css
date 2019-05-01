@@ -1,8 +1,8 @@
 .menu{
-    background-color:rgba(30, 30, 30, 0.6); 
-    border-bottom:1px solid #333;
+    background-color:rgba(30, 30, 30, 0.9); 
+    /* border-bottom:1px solid #333; */
     /* background:linear-gradient(to left, #a8ffd9, #0071a6); */
-    /* background:linear-gradient(to left, #ffb72f, #ff2f2f); */
+    /* background:linear-gradient(tyellowo left, #ffb72f, #ff2f2f); */
 }
 .menu .bloque ul li,a{
     color:#eee;
@@ -12,7 +12,7 @@
     height:95vh;
     display:flex;
     align-items: center;
-    background-color:yellow;
+    background-color:#eee;
 }
 .inside-login{
     margin:0 auto;
@@ -30,4 +30,14 @@
 #debug{
     margin:4%;
     width:92%;
+}
+@media screen and (max-width: 800px){
+    .inside-login{
+        width:60%;
+    }
+}
+@media screen and (max-width: 500px){
+    .inside-login{
+        width:90%;
+    }
 }

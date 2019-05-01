@@ -7,10 +7,10 @@ let contenido = {
             font_color: "#fff",
             texto: "ANFREE"
         },
-        "texto": "<p>Este es un texto de prueba para probar toda la funcionalidad de anfree</p><p>- o -</p>",
+        "texto": "<p>Ya está aquí la última generación de Creative Cloud. Nuevas aplicaciones. Nuevas funciones. Nuevas formas de crear. Todo lo que necesitas para convertir tus sueños en acciones.</p><p>- o -</p><p><button class='btn btn-primary'>Más información</button></p>",
         "background" : {
-            image: carpetaImg + 'vector1.jpg',
-            color: "#151726"
+            image: carpetaImg + "acubosque.jpg",
+            color: "#222"
         }
     },
     1:{

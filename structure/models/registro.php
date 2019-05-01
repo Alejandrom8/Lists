@@ -9,5 +9,8 @@ class NewRecordObject{
     public $foto;
     public $fechaRegistro;
     public $ruta;
+    public $fotoNombre;
+    public $idanfree;
+    public $mensajes_ruta;
 }
 ?>

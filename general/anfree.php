@@ -11,7 +11,7 @@ class Anfree{
     public function __construct(){
 
         $this->user = $_SESSION['nombre'];
-        $this->password = $_SESSION['email'];
+        $this->id = $_SESSION['idanfree'];
 
         $url = isset($_GET['url']) ? $_GET['url'] : null;
         $url = rtrim($url, '/');
@@ -19,13 +19,15 @@ class Anfree{
         $this->u = $url[0];
         
         if(empty($this->u)){
+
             require('structure/controllers/utopia.php');
             $WelcomePage = new Utopia();
             $WelcomePage->loadModel('utopia');
             $WelcomePage->render();
             return false;
+            
         }else{
-            $access = $this->u != 'record' && $this->u != 'login' ? $this->access($this->user, $this->password) : true;
+            $access = $this->u != 'record' && $this->u != 'login' && $this->u != 'salir' ? $this->access($this->user, $this->id) : true;
 
             if($access){
                 $file_of_controller = 'structure/controllers/' . $this->u . '.php';
@@ -71,7 +73,7 @@ class Anfree{
     protected static function access(){
         $variables = func_get_args();
         foreach($variables as $variable){
-            if(!isset($variable) || $variable == null || $variable == ""){
+            if(!isset($variable) || $variable == null || $variable == "" || $variable == false){
                 return false;
             }
         }

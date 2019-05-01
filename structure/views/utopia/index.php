@@ -34,6 +34,7 @@
                     </div>
                 </section>
             </section>
+            <section class="after"></section>
         </div>
         <?php include_once 'structure/views/footer.php'; ?>
     </div>
@@ -44,7 +45,7 @@
 <script>
     var swiper = new Swiper('.swiper-container', {
       slidesPerView: 3,
-      spaceBetween: 30,
+      spaceBetween: 21,
       freeMode: true,
       pagination: {
         el: '.swiper-pagination',

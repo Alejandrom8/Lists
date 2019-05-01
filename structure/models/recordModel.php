@@ -30,21 +30,37 @@ class recordModel extends Model{
         $registro = $data;
         try{
             $ruta = $registro->ruta ? $registro->ruta : "";
-            $insert = "INSERT INTO " . constant('TABLA_REGISTRO') . "(id, nombre, apodo, email, pass, cumple, genero, foto_ruta, fecha_registro) 
+            $insert = "INSERT INTO " . constant('TABLA_REGISTRO') . "(id, idanfree,nombre, apodo, email, pass, cumple, genero, foto_nombre,foto_ruta, fecha_registro) 
                        VALUE(
                            0,
+                           '$registro->idanfree',
                            '$registro->nombre',
                            '$registro->apodo',
                            '$registro->email',
                            '$registro->pass',
                            '$registro->cumple',
                            '$registro->genero', 
+                           '$registro->fotoNombre',
                            '$ruta',
                            '$registro->fechaRegistro'
                        )";
             $execInsert = $this->con->prepare($insert);
             $execInsert->execute();
             $execInsert->closeCursor();
+            
+            if($execInsert){
+                $crearRelacion = "INSERT INTO relaciones(id, idanfree) VALUE(0, '$registro->idanfree')";
+                $crearRelacionP = $this->con->prepare($crearRelacion);
+                $crearRelacionP->execute();
+                $crearRelacionP->closeCursor();
+                if($crearRelacionP){
+                    $crearArchivoMensajes = "INSERT INTO mensajes(id, idanfree, mensajes_ruta) VALUE(0, '$registro->idanfree', '$registro->mensajes_ruta')";
+                    $crearArchivoMensajes = $this->con->prepare($crearArchivoMensajes);
+                    $crearArchivoMensajes->execute();
+                    $crearArchivoMensajes->closeCursor();
+                }
+            }
+            
             if($registro->ruta){
                 move_uploaded_file($registro->foto['tmp_name'], $registro->ruta);
             }

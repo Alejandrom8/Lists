@@ -20,10 +20,12 @@ class Login extends Controller implements Render{
 
         if($estado){
             $respuesta = $validarNC[2];
+                $nombre = $respuesta[0];
+                $id = $respuesta[1];
             $status->estado = true;
             $status->mensaje = "Bienvenido";
-            $status->donde = constant("URL") . "home";
-            $this->iniciarSesion($respuesta[0], $respuesta[1]);
+            $status->donde = constant("URL") . "home/getData";
+            $this->iniciarSesion($nombre, $id);
         }else{
             $status->estado = false;
             $status->mensaje = $mensaje;
