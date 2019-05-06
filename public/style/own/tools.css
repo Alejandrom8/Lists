@@ -80,7 +80,7 @@
     width:30%;
     height:calc(100vh - 50px);
     position:absolute;
-    right:-50vh;
+    right:-100vh;
     top:50px;
     background-color:#eee;
     transition:all 0.3s;
@@ -138,6 +138,7 @@
     height:95%;
     background:#ccc;
     overflow-y: scroll;
+    overflow-x: hidden;
 }
 .toggle-message .friend-box{
     width:100%;
@@ -152,13 +153,13 @@
 }
 .toggle-message .message-box{
     width:100%;
-    height:80%;
+    height:84%;
     padding:4%;
     background-color:#eee;
 }
 .toggle-message .submit-box{
     width:100%;
-    height:10%;
+    height:6%;
     background-color:purple;
 }
 .toggle-message .submit-box .row .col-sm-10, .toggle-message .submit-box .row .col-sm-2{
@@ -206,4 +207,44 @@
     #message .col-sm-2{
         width:20%;
     }
+}
+
+/*MESSAGE SECTION*/
+.contFotoFriend{
+    width:100%;
+    height:50px;
+    background-color:#5d67b0;
+    display:flex;
+    align-items:center;
+}
+.fotoAmigo{
+    margin:0 auto;
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    background-color:#fff;
+}
+.conversation{
+    width:100%;
+    height:100%;
+    padding:4%;
+    background-color:#5d67b0;
+    border-radius:15px;
+    overflow-y:scroll;
+}
+.mensaje{
+    border-radius:20px;
+    text-align:center;
+    max-width:60%;
+    padding-left:10px;
+    padding-right:10px;
+}
+.anfitrion{
+    /* margin-left:30%; */
+    float:right;
+    background-color:#fff;
+}
+.invitado{
+    float:left;
+    background-color:#ccc;
 }

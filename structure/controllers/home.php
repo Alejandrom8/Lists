@@ -1,58 +1,58 @@
 <?php 
+
+include_once("../models/modelResponse.php");
+
+class amigo{
+    public $id;
+    public $nombre;
+    public $foto;
+    public $mensajes;
+}
+
 class Home extends controller implements Render{
+
+    protected $user;
 
     public function __construct(){
         parent::__construct();
+        $this->user = $_SESSION['idanfree'];
     }
 
     public function render(){
         $this->view->render('home/index');
     }
-
-    public function getData(){
-        $foto_usuario = $this->model->getFoto($_SESSION["idanfree"]);
-
-        if($foto_usuario != null){
-
-            $img_url = constant("LOCAL") . "intranet/uploads/" . $foto_usuario;
-            if(!$this->UR_exists($img_url)){
-                $img_url = constant("DEFAULT_FOTO");
-            }
-            $_SESSION['user_foto'] = $img_url;
-
-        }else{
-            $_SESSION['user_foto'] = constant("DEFAULT_FOTO");
-        }
-
-        print("<script>window.location= '" . constant("URL") . "home';</script>");
+    public function social(){
+        $this->view->render("home/social");
     }
 
-    public function getDataFriends(){
+    public function getUserData(){
 
-        $archivo = $this->getFileArray();
-        $amigos = $archivo["amigos"];
-        $fotos = [];
+        $respuesta = new ServiceResult();
 
-        foreach($amigos as $key => $amigo){
-            $foto = $this->model->getFoto($amigo);
-            $nombre = $this->model->getNombre($amigo);
-            if($foto == null || $foto == false){
-                $foto = constant("DEFAULT_FOTO");
-            }else{
-                $foto = constant("LOCAL") . "intranet/uploads/" . $foto;
+        $foto_usuario = $this->model->getOneData(
+                "foto_nombre",
+                constant("TABLA_REGISTRO"),
+                "idanfree",
+                $this->user
+        );
+
+        $respuesta->success = $foto_usuario->success;
+        $respuesta->errors  = $foto_usuario->errors;
+        $respuesta->data    = $foto_usuario->data;
+
+        $user_foto_url = constant("DEFAULT_FOTO");
+
+        if($respuesta->success){
+            if($respuesta->data != null){
+                $user_foto_url = constant("LOCAL") . "intranet/uploads/" . $respuesta->data;
+                if(!$this->UR_exists($user_foto_url)){
+                    $user_foto_url = constant("DEFAULT_FOTO");
+                }
             }
-            $fotos[] = ["idanfree" => $amigo, "nombre" => $nombre,"foto" => $foto];
         }
-        
-        echo json_encode($fotos, true);
-    }
-    
-    public function getConversation(){
-        $index = (string)$_POST['data'];
-        $archivo = $this->getFileArray();
-        $mensajes = $archivo["mensajes"];
-        $mensajes = (array)$mensajes;
-        echo json_encode($mensajes[$index], true);
+
+        $_SESSION['user_foto'] = $user_foto_url;
+        header("Location: " . constant("URL") . "home");
     }
 
     private static function UR_exists($url){
@@ -60,43 +60,103 @@ class Home extends controller implements Render{
         return stripos($headers[0],"200 OK")?true:false;
     }
 
-    protected function getFileArray(){
-        $archivo_dir = $this->model->getFile($_SESSION['idanfree']);
-        $archivo = file_get_contents($archivo_dir);
-        $amigos = json_decode($archivo, true);
-        return $amigos;
+    public function getUserRelationData(){
+
+        $respuesta = new ServiceResult();
+
+        $relaciones_consult = $this->model->getAllData(
+            "relacion",
+            "relaciones",
+            "idanfree",
+            $this->user
+        );
+
+        $respuesta->success = $relaciones_consult->success;
+        $respuesta->errors  = $relaciones_consult->errors;
+        $respuesta->data    = $relaciones_consult->data;
+
+        $ajaxResponse = new ServiceResult();
+
+        if($respuesta->success){
+            if($respuesta->data != null){
+
+                $amigos = [];
+                $errores = [];
+
+                if(count($respuesta->data) > 0){
+                    
+                    foreach($respuesta->data as $amigo_id){
+                        
+                        $friendObj = new amigo();
+                        $friendObj->id = $amigo_id;
+
+                        $foto = $this->model->getOneData(
+                            "foto_nombre",
+                            constant("TABLA_REGISTRO"),
+                            "idanfree",
+                            $amigo_id
+                        );
+
+                        $nombre = $this->model->getOneData(
+                            "nombre",
+                            constant("TABLA_REGISTRO"),
+                            "idanfree",
+                            $amigo_id
+                        );
+
+                        if($foto->errors != 0){
+                            array_push($errores, $foto->errors);
+                        }
+                        if($nombre->errors != 0){
+                            array_push($errores, $nombre->errors);
+                        }
+
+                        $friendObj->nombre  = $nombre->data;
+                        $friendObj->foto    = $foto->data;
+                        array_push($amigos, $friendObj);
+                    }
+                }
+
+                $ajaxResponse->success = true;
+                $ajaxResponse->errors  = $errores;
+                $ajaxResponse->data    = $amigos;
+
+            }
+
+        }else{
+            $ajaxResponse->success = false;
+            $ajaxResponse->errors  = $respuesta->errors;
+            $ajaxResponse->data    = null;
+            $ajaxResponse->message = "No se lograron obtener los datos de tus amigos";
+        }
+
+        echo json_encode($ajaxResponse);
     }
 
-    public function sendMessage(){
+    public function registMessage(){
+        $friend = $this->desinfect($_POST['amigo']);
+        $mensaje = $this->desinfect($_POST['message']);
+        $date  = strftime("%y-%m-%d %H:%M");
+        $regist = $this->model->registMessage(
+            $this->user,
+            $friend,
+            $mensaje,
+            $date
+        );
+    }
 
-        $friend = $_REQUEST['friend'];
-        $mensaje = $_REQUEST['message'];
-        $fecha = strtotime("%y-%m-%d");
+    public function getUserRelationMessage(){
+
+        $amigo = $this->desinfect($_POST['amigo']);
         
-        $archivo = $this->getFileArray();
+        $getmensajes = $this->model->getMensajes($amigo);
 
-        if(isset($archivo["mensajes"][$friend])){
-
-            $longitud = count($archivo["mensajes"][$friend]);
-            $index = "mensaje" . $longitud;
-            $idanfree_local = $_SESSION['idanfree'];
-
-            $nuevoMensaje = ["id" => $idanfree_local, "mensaje" => $mensaje, "fecha" => "19-04-02"];
-            $archivo["mensajes"][$friend][$index] = $nuevoMensaje;
-            
-            $archivo_dir = $this->model->getFile($idanfree_local);
-            file_put_contents($archivo_dir, json_encode($archivo));
-
-            $archivo_dir_friend = $this->model->getFile($friend);
-            $archivo_friend_get = file_get_contents($archivo_dir_friend);
-            $archivo_friend = json_decode($archivo_friend_get, true);
-
-            $archivo_friend["mensajes"][$idanfree_local][$index] = $nuevoMensaje;
-
-            file_put_contents($archivo_dir_friend, json_encode($archivo_friend));
-        }else{ 
-
+        if($getmensajes->success){
+            if($getmensajes->data != null){
+                echo json_encode($getmensajes->data);
+            }
         }
+
     }
 }
 

@@ -8,8 +8,13 @@
 <body>
     <div class="webpage">
         <?php include_once 'structure/views/app/tools.php'; ?>
-        <div class="container-own" style="height:130vh;">
-
+        <div class="container-own" style="padding-top:10%;height:130vh; background-color:tomato;">
+           <div class="form-group">
+           <input type="text" name="buscador" class='form-control'>
+           <button class="btn btn-primary">
+                Buscar
+           </button>
+           </div>
         </div>
     </div>
 </body>

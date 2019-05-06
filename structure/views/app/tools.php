@@ -24,13 +24,19 @@
             <img src="<?php echo $_SESSION['user_foto'];?>" alt="user foto" class="foto">
         </div>
         <table class="table">
+            <tr class="boton-menu-tools" data-href="<?php echo constant('URL'); ?>home">
+                <td>
+                    <i class="fas fa-home"></i>
+                    Inicio
+                </td>
+            </tr>
             <tr class="boton-menu-tools">
                 <td>
                     <i class="fas fa-user-alt"></i>
                     Actualizar datos
                 </td>
             </tr>
-            <tr class="boton-menu-tools">
+            <tr class="boton-menu-tools" data-href="<?php echo constant('URL'); ?>home/social">
                 <td>
                     <i class="fas fa-user-friends"></i>
                     Social
@@ -53,24 +59,6 @@
     <?php include_once "message.php";?>
 </div>
 <script>
-    // const toggles = document.querySelectorAll(".toggle");
-    // let flag = false;
-    // toggles.forEach(toggle =>{
-    //     toggle.addEventListener("click", function(){
-    //         const id = this.dataset.iddiv;
-    //         $(document).ready(function(){
-    //             if(!flag){
-    //                 // this.removeClass("fa-caret-square-left").addClass("fa-caret-square-right");
-    //                 $("#"+id).css({"right": "0"});
-    //                 flag = true;
-    //             }else{
-    //                 // this.removeClass("fa-caret-square-right").addClass("fa-caret-square-left");
-    //                 $("#"+id).css({"right": "-50vh"});
-    //                 flag = false;
-    //             }
-    //         });
-    //     });
-    // });
     $(document).ready(function(){
         let flag = false;
         $("#tools-button").on("click", function(){
@@ -80,7 +68,7 @@
                 flag = true;
             }else{
                 $(this).removeClass("fa-caret-square-right").addClass("fa-caret-square-left");
-                $("#tools.toggle-menu").css({"right": "-50vh"});
+                $("#tools.toggle-menu").css({"right": "-100vh"});
                 flag = false;
             }
         });
@@ -90,7 +78,7 @@
                 $("#message.toggle-message").css({"right": "0"});
                 flag2 = true;
             }else{
-                $("#message.toggle-message").css({"right": "-60vh"});
+                $("#message.toggle-message").css({"right": "-80vh"});
                 flag2 = false;
             }
         });

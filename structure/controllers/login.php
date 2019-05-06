@@ -24,7 +24,7 @@ class Login extends Controller implements Render{
                 $id = $respuesta[1];
             $status->estado = true;
             $status->mensaje = "Bienvenido";
-            $status->donde = constant("URL") . "home/getData";
+            $status->donde = constant("URL") . "home/getUserData";
             $this->iniciarSesion($nombre, $id);
         }else{
             $status->estado = false;
