@@ -15,10 +15,10 @@ class HomeModel extends Model{
             $estado = true;
             $respuesta = $data["foto_nombre"];
 
-            return ["estado" => $estado, "respuesta" => $respuesta];
+            return $respuesta;
             
         }catch(PDOException $e){
-            return ["estado" => false, "mensaje" => $e];
+            return null;
         }
     }
     public function getFile($id){
@@ -29,6 +29,21 @@ class HomeModel extends Model{
             $SqlBefore->execute();
             $data = $SqlBefore->fetch(PDO::FETCH_ASSOC);
             $respuesta = $data["mensajes_ruta"];
+
+            return $respuesta;
+            
+        }catch(PDOException $e){
+            return $e;
+        }
+    }
+    public function getNombre($id){
+        try{
+
+            $sql = "SELECT nombre FROM registros WHERE idanfree = '$id' LIMIT 1";
+            $SqlBefore = $this->con->prepare($sql);
+            $SqlBefore->execute();
+            $data = $SqlBefore->fetch(PDO::FETCH_ASSOC);
+            $respuesta = $data["nombre"];
 
             return $respuesta;
             
