@@ -112,7 +112,11 @@ class Home extends controller implements Render{
                         }
 
                         $friendObj->nombre  = $nombre->data;
-                        $friendObj->foto    = $foto->data;
+                        $friendObj->foto    = 
+                            $foto->data != null && 
+                            $foto->data != "" && 
+                            $foto->data != 'null' ? $foto->data : "porfile-default.png";
+                            
                         array_push($amigos, $friendObj);
                     }
                 }
@@ -136,13 +140,15 @@ class Home extends controller implements Render{
     public function registMessage(){
         $friend = $this->desinfect($_POST['amigo']);
         $mensaje = $this->desinfect($_POST['message']);
-        $date  = strftime("%y-%m-%d %H:%M");
-        $regist = $this->model->registMessage(
-            $this->user,
-            $friend,
-            $mensaje,
-            $date
-        );
+        if($mensaje != "" and $mensaje != null){
+            $date  = strftime("%y-%m-%d %H:%M");
+            $regist = $this->model->registMessage(
+                $this->user,
+                $friend,
+                $mensaje,
+                $date
+            );
+        }
     }
 
     public function getUserRelationMessage(){

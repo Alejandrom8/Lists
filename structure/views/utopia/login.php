@@ -15,6 +15,7 @@
                         <div class="col-sm-12">
                             <h2>Login</h2>
                         </div>
+                        <br>
                         <div class="col-sm-12">
                             <form id="login" class="form" name="login" method="POST" action="<?php echo constant('URL'); ?>login/logear">
                                 <div class="form-group">
@@ -25,7 +26,8 @@
                                     <label for="pass">Contraseña</label>
                                     <input type="password" name="pass" id="pass" class="form-control">
                                 </div>
-                                <input type="submit" name="send" id="send" class="btn btn-primary" value="Entrar">
+                                <br>
+                                <center><input type="submit" name="send" id="send" class="btn btn-primary" value="Entrar"></center>
                             </form>
                         </div>
                         <div class="col-sm-12" id="debug">

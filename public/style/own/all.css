@@ -12,6 +12,7 @@ a:hover{
     align-items:center;
     z-index:100;
     transition: all 0.5s;
+    background: #333;
     -webkit-transition:all 0.5s;
 }
 .container-own{
@@ -32,7 +33,7 @@ a:hover{
 #menu .nav-menu .row .bloque{
     width:50%;
     height:100%;
-    font-family:'roboto bold';
+    font-family:'pierSans';
 }
 #menu .nav-menu .row .bloque ul{
     height:100%;
@@ -46,7 +47,7 @@ a:hover{
 #menu .nav-menu .row .bloque ul li a:hover{
     text-decoration: none;
     color:#333;
-    background-color:#c0c0f2;
+    background-color:#ffde0b;
 }
 .left ul{
     display:flex;
@@ -113,6 +114,9 @@ a:hover{
 #menumovile tr td h4 a:hover{
     color:antiquewhite;
 }
+#menu .fa-bars{
+    color:#fff;
+}
 @media only screen and (max-height: 480px){
     #menumovile{
         height:90vh;
@@ -122,4 +126,19 @@ a:hover{
     border-radius:25px;
     text-align: center;
     font-weight:bold;
+}
+
+.btn-pretty{
+    background-color:rgba(0,0,0,0.3);
+    border:0.25rem solid #065efe;
+    padding:0.5rem;
+    color:#fff;
+    border-radius:0.5rem;
+    transition:all 0.2s;
+}
+.btn-pretty:hover{
+    background-color:rgba(255,255,255,0.9);
+    box-shadow:#065efe 1px 2px 7px;
+    color:#000;
+    transition:all 0.2s;
 }

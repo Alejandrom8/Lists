@@ -25,18 +25,18 @@
     text-align: center;
 }
 .anuncio h1{
-    font-family: 'roboto bold';
+    font-family: 'pierSans bold';
     font-size:5rem;
     font-weight:bold;
     /* color:#333; */
 }
-.anuncio p{font-family:'roboto';font-size:1.3rem;}
+.anuncio p{font-family:'pierSans';font-size:1.2rem;}
 .slider .row .col-sm-1{display:flex;align-items:center;}
 .boton-slider{
     margin:0 auto;
     width:50%;
     height:30%;
-    background-color: rgba(130, 130, 230, 0.5);
+    background-color:rgba(6, 94, 254, 0.5);
     cursor:pointer;
     -webkit-transition:all 0.5s;
     border-radius:15px;
@@ -59,14 +59,14 @@
 }
 .after{
     height:90vh;
-    background-color:#666;
+    background-color:#ffde0b;
 }
 #carrusel{
     width:100%;
     height:100%;
     display:flex;
     align-items: center;
-    background-color:#5d67b0;
+    background-color:#8308b1;
 }
 #carrusel .swiper-container {
     margin:0 auto;
@@ -101,7 +101,7 @@
   }
   .bloque-image{
       width:100%;
-      height:55%;
+      height:50%;
       overflow: hidden;
   }
   .text{
@@ -128,4 +128,9 @@
       width:108%;
       height:108%;
       -webkit-transition: all 0.8s;
+  }
+  @media screen and (max-width: 768px){
+    .after.c{
+        height:60vh;
+    }
   }

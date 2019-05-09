@@ -61,7 +61,7 @@ for(let i = 0; i < Object.keys(notas).length; i++){
         bloque_log += "<div class='text'>" + 
                     "<h3>"+ titulo +"</h3>" + 
                     "<p>"+ texto +"</p>" +
-                    "<center><button class='btn btn-primary'>Más</button></center>" +  
+                    // "<center><button class='btn btn-primary'>Más</button></center>" +  
                   "</div>";
         bloque_log += "</div></div>";
 }

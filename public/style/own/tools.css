@@ -2,10 +2,12 @@
     width:100%;
     height:50px;
     position:fixed;
-    background-color:#aaa;
+    background-color:#333;
     display:flex;
     align-items:center;
     z-index:10;
+    color:#fff;
+    font-family:"pierSans";
 }
 #menu-tools .row{
     margin:0;
@@ -38,13 +40,13 @@
     align-items: center;
     overflow: hidden;
     flex-wrap: nowrap;
-    background-color:#fff;
+    /* background-color:#fff; */
     border-bottom-right-radius: 25px;
     border-top-right-radius: 25px;
-    color:#333;
+    /* color:#333; */
 }
 .show-data .foto-cont{
-    width:40%;
+    width:30%;
     height:100%;
     background: #5d67b0;
     display:flex;
@@ -52,8 +54,8 @@
 }
 .foto{
     margin:0 auto;
-    width:47px;
-    height:47px;
+    width:40px;
+    height:40px;
     border-radius:50%;
     border:3px solid gray;
 }
@@ -64,13 +66,14 @@
     float:right;
     width:100%;
     height:100%;
-    background-color:#fff;
-    vertical-align: middle;
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
 }
 .tools i{
-    float:right;
-    margin-top:7px;
-    margin-right:5px;
+    /* float:right; */
+    margin-left:0.5rem;
+    margin-right:0.5rem;
     color:#5d67b0;
 }
 /* .tools i:active{
@@ -122,6 +125,7 @@
     background-color:#eee;
     transition:all 0.3s;
     -webkit-transition:all 0.3s;
+    color:#333;
 }
 .toggle-message .section{
     height:calc(100vh - 50px);
@@ -135,7 +139,7 @@
 .toggle-message #friends-cont{
     margin:0 auto;
     width:95%;
-    height:95%;
+    height:100%;
     background:#ccc;
     overflow-y: scroll;
     overflow-x: hidden;
@@ -153,14 +157,15 @@
 }
 .toggle-message .message-box{
     width:100%;
-    height:84%;
+    height:86%;
     padding:4%;
     background-color:#eee;
 }
 .toggle-message .submit-box{
     width:100%;
     height:6%;
-    background-color:purple;
+    /* padding:1%; */
+    background-color:#5d67b0;
 }
 .toggle-message .submit-box .row .col-sm-10, .toggle-message .submit-box .row .col-sm-2{
     padding:0;
@@ -222,7 +227,7 @@
     width:40px;
     height:40px;
     border-radius:50%;
-    background-color:#fff;
+    /* background-color:#fff; */
 }
 .conversation{
     width:100%;
@@ -235,7 +240,8 @@
 .mensaje{
     border-radius:20px;
     text-align:center;
-    max-width:60%;
+    /* min-width: 40%; */
+    max-width:100%;
     padding-left:10px;
     padding-right:10px;
 }

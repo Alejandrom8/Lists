@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="webpage">
-        <script src="<?php echo constant('URL');?>public/style/dropdown-up.js"></script>
+        <!--<script src="<?php echo constant('URL');?>public/style/dropdown-up.js"></script>-->
         <?php include_once 'structure/views/menu.php'; ?>
         <div class="container-own">
             <header id="slider" class="slider">
@@ -24,7 +24,7 @@
                     </div>
                 </div>
             </header>
-            <section class="after">
+            <section class="after c">
                 <section id="carrusel">
                     <div class="swiper-container">
                         <div class="swiper-wrapper" id="swip-app">
@@ -34,7 +34,9 @@
                     </div>
                 </section>
             </section>
-            <section class="after"></section>
+            <section class="after">
+
+            </section>
         </div>
         <?php include_once 'structure/views/footer.php'; ?>
     </div>
@@ -57,11 +59,11 @@
           spaceBetween: 40,
         },
         768: {
-          slidesPerView: 3,
+          slidesPerView: 2,
           spaceBetween: 30,
         },
         640: {
-          slidesPerView: 1,
+          slidesPerView: 2,
           spaceBetween: 20,
         },
         320: {

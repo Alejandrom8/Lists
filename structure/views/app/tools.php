@@ -1,6 +1,6 @@
 <div class="menu-tools" id="menu-tools">
     <div class="menu-tools-cont"> 
-        <div style="width:70%;">
+        <div style="width:60%;">
             <section class="show-data">
                 <div class="row">
                     <div class="foto-cont">
@@ -12,10 +12,14 @@
                 </div>
             </section>
         </div>
-        <div style="width:30%;">
+        <div style="width:40%;">
             <section class="tools">
-                    <i id="tools-button" class="far fa-caret-square-left fa-3x fa-lg"></i>
-                    <i id="message-button" class="fas fa-comments fa-2x fa-lg" style="margin-top:5%;"></i>
+                    <div class="input-group" style="background:#ddd;border-radius:25px;">
+					    <span class="input-group-addon" style="display:flex;justify-content:space-around;align-items:center;"><i class="fas fa-search fa-2x" aria-hidden="true"></i></span>
+						<input type='text' class="form-control" id="consulta" placeholder="Buscar amigos" maxlength="50">
+					</div>
+                    <i id="message-button" class="fas fa-comments fa-2x fa-lg" title="mensajes"></i>
+                    <i id="tools-button" class="far fa-caret-square-left fa-2x fa-lg" title="menú"></i>
             </section>
         </div>
     </div>

@@ -1,3 +1,4 @@
+/* ROBOTO */
 @font-face{
     src: url('../../tipography/Roboto/Roboto-Regular.ttf');
     font-family: 'roboto';
@@ -26,3 +27,27 @@
     src: url('../../tipography/ArimaKoshi-Regular.otf');
     font-family: 'arima';
 }
+
+/* Pier Sans */
+@font-face{
+    src: url('../../tipography/PierSans/PierSans-Regular.otf');
+    font-family: 'pierSans';
+}
+@font-face{
+    src: url('../../tipography/PierSans/PierSans-Light.otf');
+    font-family: 'pierSans light';
+}
+@font-face{
+    src: url('../../tipography/PierSans/PierSans-Bold.otf');
+    font-family: 'pierSans bold';
+}
+@font-face{
+    src: url('../../tipography/PierSans/PierSans-Medium.otf');
+    font-family: 'pierSans medium';
+}
+@font-face{
+    src: url('../../tipography/PierSans/PierSans-Black.otf');
+    font-family: 'pierSans black';
+}
+
+

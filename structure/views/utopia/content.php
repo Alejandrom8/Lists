@@ -7,9 +7,9 @@ let contenido = {
             font_color: "#fff",
             texto: "ANFREE"
         },
-        "texto": "<p>Ya está aquí la última generación de Creative Cloud. Nuevas aplicaciones. Nuevas funciones. Nuevas formas de crear. Todo lo que necesitas para convertir tus sueños en acciones.</p><p>- o -</p><p><button class='btn btn-primary'>Más información</button></p>",
+        "texto": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ac arcu et purus pulvinar malesuada. Cras at urna vel sem pretium sollicitudin vitae quis justo.</p><p>- o -</p><p><button class='btn-pretty'>Más información</button></p>",
         "background" : {
-            image: carpetaImg + "acubosque.jpg",
+            image: carpetaImg + "f5.jpg",
             color: "#222"
         }
     },

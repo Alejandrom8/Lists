@@ -1,6 +1,35 @@
 let URl = "http://192.168.1.71/social_network/";
 let firstFriendGlobalId, firstFriendGlobalNombre;
 
+// function httpRequest(url, callback){
+//     const http = new XMLHttpRequest();
+//     http.open("GET", url);
+//     http.send();
+  
+//     http.onreadystatechange = function(){
+//       if(this.readyState == 4 && this.status == 200){
+//         callback.apply(http);
+//       }
+//     }
+// }
+
+//   httpRequest(URL + "home/getUserRelationData/" + , function(){
+//         console.log(this.responseText);
+//   });
+
+const ajax = async () => {
+    let req = new XMLHttpRequest();
+
+    req.onreadystatechange = function(){
+        if(req.readyState == 4 && req.status == 200){
+            $("#message-box").html(req.responseText);
+        }
+    }
+
+    await req.open('GET', URL + "home/getUserRelationMessage", true);
+    req.send();
+}
+
 function getRelationData(){
     $.ajax({
         url: "http://192.168.1.71/social_network/home/getUserRelationData",
