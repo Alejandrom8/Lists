@@ -14,7 +14,7 @@
         </div>
         <div style="width:40%;">
             <section class="tools">
-                    <div class="input-group" style="background:#ddd;border-radius:25px;">
+                    <div id="searchFriends" class="input-group" style="background:#ddd;border-radius:25px;">
 					    <span class="input-group-addon" style="display:flex;justify-content:space-around;align-items:center;"><i class="fas fa-search fa-2x" aria-hidden="true"></i></span>
 						<input type='text' class="form-control" id="consulta" placeholder="Buscar amigos" maxlength="50">
 					</div>
@@ -64,25 +64,15 @@
 </div>
 <script>
     $(document).ready(function(){
-        let flag = false;
+        let flag2 = false;
         $("#tools-button").on("click", function(){
-            if(!flag){
+            if(!flag2){
                 $(this).removeClass("fa-caret-square-left").addClass("fa-caret-square-right");
                 $("#tools.toggle-menu").css({"right": "0"});
-                flag = true;
+                flag2 = true;
             }else{
                 $(this).removeClass("fa-caret-square-right").addClass("fa-caret-square-left");
                 $("#tools.toggle-menu").css({"right": "-100vh"});
-                flag = false;
-            }
-        });
-        let flag2 = false;
-        $("#message-button").on("click", function(){
-            if(!flag2){
-                $("#message.toggle-message").css({"right": "0"});
-                flag2 = true;
-            }else{
-                $("#message.toggle-message").css({"right": "-80vh"});
                 flag2 = false;
             }
         });

@@ -3,7 +3,7 @@
 }
 .slider{
     width:100%;
-    height:90vh;
+    height:100vh;
     background-repeat:no-repeat;
     background-attachment: fixed !important;
     background-size:cover;
@@ -61,12 +61,20 @@
     height:90vh;
     background-color:#ffde0b;
 }
+.after.T{
+	padding:15%;
+	color:#333;
+	font-family:'pierSans';
+	text-align:center;
+	line-height:2rem;
+}
 #carrusel{
     width:100%;
     height:100%;
     display:flex;
     align-items: center;
-    background-color:#8308b1;
+    /* background-color:#8308b1; */
+    background:#2e5bc2;
 }
 #carrusel .swiper-container {
     margin:0 auto;
@@ -131,6 +139,12 @@
   }
   @media screen and (max-width: 768px){
     .after.c{
-        height:60vh;
+        height:70vh;
     }
+	.anuncio h1{
+		font-size:4rem;
+	}
+	.after.T{
+		line-height:1.7rem;
+	}
   }

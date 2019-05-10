@@ -60,6 +60,19 @@ class Home extends controller implements Render{
         return stripos($headers[0],"200 OK")?true:false;
     }
 
+    public function getRelationDataFirst () {
+        $respuesta = new ServiceResult();
+        $first = $this->model->getFirstRelation($this->user);
+        $respuesta->success = $first->success;
+        $respuesta->errors  = $first->errors;
+        $respuesta->data    = $first->data;
+        if($respuesta->success){
+            echo $respuesta->data;
+        }else{
+            echo $respuesta->errors;
+        }
+    }
+
     public function getUserRelationData(){
 
         $respuesta = new ServiceResult();
@@ -115,7 +128,7 @@ class Home extends controller implements Render{
                         $friendObj->foto    = 
                             $foto->data != null && 
                             $foto->data != "" && 
-                            $foto->data != 'null' ? $foto->data : "porfile-default.png";
+                            $foto->data != 'null' ? constant("URL_FOTOS") . $foto->data : constant("DEFAULT_FOTO");
                             
                         array_push($amigos, $friendObj);
                     }
@@ -158,9 +171,7 @@ class Home extends controller implements Render{
         $getmensajes = $this->model->getMensajes($amigo);
 
         if($getmensajes->success){
-            if($getmensajes->data != null){
-                echo json_encode($getmensajes->data);
-            }
+            echo json_encode($getmensajes->data);
         }
 
     }

@@ -36,6 +36,33 @@ class HomeModel extends Model{
 
     }
 
+    public function getFirstRelation($id){
+
+        $respuesta = new ServiceResult();
+
+        try{
+
+            $sql = "SELECT relacion FROM relaciones WHERE idanfree = '$id' LIMIT 1";
+            $SqlBefore = $this->con->prepare($sql);
+            $SqlBefore->execute();
+            $data = $SqlBefore->fetch(PDO::FETCH_ASSOC);
+            
+            $respuesta->success = true;
+            $respuesta->errors = 0;
+            $respuesta->data = $data['relacion'];
+            
+        }catch(PDOException $e){
+
+            $respuesta->success = false;
+            $respuesta->errors = $e;
+            $respuesta->data = null;
+
+        }
+
+        return $respuesta;
+
+    }
+
     public function getAllData($dato, $tabla, $condicion, $comparador){
 
         $respuesta = new ServiceResult();
@@ -90,7 +117,7 @@ class HomeModel extends Model{
         $user = $_SESSION['idanfree'];
 
         try{
-            $sql = "SELECT * FROM mensajes WHERE idanfree = \"$user\" AND relacion = '$id_friend' OR idanfree = '$id_friend' AND relacion = '$user'";
+            $sql = "SELECT * FROM mensajes WHERE (idanfree = \"$user\" AND relacion = '$id_friend') OR (idanfree = '$id_friend' AND relacion = '$user')";
             $e = $this->con->prepare($sql);
             $e->execute();
 

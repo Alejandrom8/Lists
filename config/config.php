@@ -17,6 +17,7 @@ define('MAX_FOTO_SIZE', 50000000);//6.25 MB
 define('TABLA_REGISTRO', 'registros');
 //carpeta donde se guardaran las fotos
 define('CARPETA_FOTOS', $_SERVER['DOCUMENT_ROOT'] . '/intranet/uploads/');
+define('URL_FOTOS', constant('LOCAL') . "intranet/uploads/");
 define('CARPETA_MENSAJES', $_SERVER['DOCUMENT_ROOT'] . '/intranet/mensajes/');
 //constantes visibles
 define('DEFAULT_FOTO', constant("LOCAL") ."intranet/uploads/porfile-default.png");
