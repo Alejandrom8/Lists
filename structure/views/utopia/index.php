@@ -35,9 +35,9 @@
                 </section>
             </section>
             <section class="after T">
-		<div>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vitae ipsum interdum, scelerisque quam eget, facilisis leo. Nullam massa quam, feugiat in augue sed, blandit aliquam ex. Nulla faucibus suscipit egestas. Suspendisse nec turpis arcu. Nullam varius, tellus id rutrum pulvinar, sem metus pulvinar diam, ut sagittis enim felis ut sem. Etiam leo felis, congue quis felis sit amet, placerat feugiat leo. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras mollis accumsan tincidunt. Curabitur scelerisque ex non augue viverra tincidunt. </p>
-		</div>
+              <div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vitae ipsum interdum, scelerisque quam eget, facilisis leo. Nullam massa quam, feugiat in augue sed, blandit aliquam ex. Nulla faucibus suscipit egestas. Suspendisse nec turpis arcu. Nullam varius, tellus id rutrum pulvinar, sem metus pulvinar diam, ut sagittis enim felis ut sem. Etiam leo felis, congue quis felis sit amet, placerat feugiat leo. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras mollis accumsan tincidunt. Curabitur scelerisque ex non augue viverra tincidunt. </p>
+              </div>
             </section>
         </div>
         <?php include_once 'structure/views/footer.php'; ?>

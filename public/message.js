@@ -4,7 +4,7 @@ const displayFotoFriend = $("#friends-cont");
 const form = $("#messageSection");
 const input = $("#message_input");
 const displayNameFriend = $("#friend-box");
-let loop, loopTemp, flag = false, cantM = 0;
+let loop, flag = false, cantM = 0;
 
 function AppMessage(url = URLConst) {
 
@@ -146,9 +146,9 @@ function AppMessage(url = URLConst) {
     };
 
     let changeFor = (id, name) => {
-        displayNameFriend.html("<p>" + name + "</p>");
+        displayNameFriend.html(`<p> ${name} </p>`);
         form.remove("input[type='hidden']");
-        form.append("<input type='hidden' name='amigo' value='" + id + "'>");
+        form.append(`<input type='hidden' name='amigo' value='${id}'>`);
         init(id);
     };
 
@@ -189,13 +189,15 @@ function startAll(){
     $("#message.toggle-message").css({"right": "0"});
     AppMessage();
     $('body').css("overflow-y","hidden");
+    $("#message-button").css("color", "#999");
     flag = true;
 }
 
 function stopAll(){
-    $("#message.toggle-message").css({"right": "-80vh"});
+    $("#message.toggle-message").css({"right": "-170vh"});
     clearInterval(loop);
-    $('body').css("overflow-y","scroll");
+    $('body').css("overflow-y","auto");
+    $("#message-button").css("color", "#eee");
     flag = false;
 }
 

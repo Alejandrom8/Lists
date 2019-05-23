@@ -48,19 +48,6 @@ class recordModel extends Model{
             $execInsert->execute();
             $execInsert->closeCursor();
             
-            if($execInsert){
-                $crearRelacion = "INSERT INTO relaciones(id, idanfree) VALUE(0, '$registro->idanfree')";
-                $crearRelacionP = $this->con->prepare($crearRelacion);
-                $crearRelacionP->execute();
-                $crearRelacionP->closeCursor();
-                if($crearRelacionP){
-                    $crearArchivoMensajes = "INSERT INTO mensajes(id, idanfree, mensajes_ruta) VALUE(0, '$registro->idanfree', '$registro->mensajes_ruta')";
-                    $crearArchivoMensajes = $this->con->prepare($crearArchivoMensajes);
-                    $crearArchivoMensajes->execute();
-                    $crearArchivoMensajes->closeCursor();
-                }
-            }
-            
             if($registro->ruta){
                 move_uploaded_file($registro->foto['tmp_name'], $registro->ruta);
             }

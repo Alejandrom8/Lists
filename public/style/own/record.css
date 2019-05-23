@@ -3,7 +3,7 @@
 }
 .registZone{
     width:100%;
-    height:val(-registZone-height-);
+    height:var(-registZone-height-);
     /* background-image:linear-gradient(to right, #fff, #ddd); */
     display:flex;
     align-items:center;
@@ -64,7 +64,7 @@
     font-family:'roboto black';
 }
 .all .btn{
-    background-color:#5d67b0;
+    background-color:var(--main-anfree);
 }
 .all .headForm{
     /* background-color:#5400c4; */
@@ -142,7 +142,7 @@
     /* border-radius:50%; */
     overflow:hidden;
     /* background: linear-gradient(to bottom, #5400c4, #5010a6); */
-    background-color:#5d67b0;
+    background-color:var(--main-anfree);
     /* border:5px dashed #636a99; */
     /*background-image:url('../../img/ardilla.png');*/
     background-size: cover;

@@ -1,0 +1,161 @@
+#social-head{
+    width:100%;
+    margin-top:50px;
+    height:60%;
+    /* background-color:blue; */
+}
+#social-head #social-header{
+    width:100%;
+    height:80%;
+    background-image: url('../../img/backgrounds/people.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    text-align:center;
+    justify-content: space-around;
+    display:flex;
+    align-items: center;
+}
+#social-head #menu-social{
+    padding:3%;
+    padding-top:2%;
+    width:100%;
+    height:20%;
+}
+#social-head #menu-social ul{
+    border-bottom:1px solid #ccc;
+}
+#social-head #social-header h1{
+    color:#fff;
+    font-size:4rem;
+    font-family:"pierSans black";
+    /* text-shadow: 0px 8px 10px #333; */
+    background-color:var(--main-anfree);
+    border-radius:20px;
+    padding-left:4%;
+    padding-right:4%;
+}
+#menu-social{
+    width:100%;
+    /* margin-top:10%; */
+    height:20vh;
+    /* background-color:red; */
+}
+.module{
+    display:none;
+}
+.search{
+    width:100%;
+    height:40vh;
+    background:#FFD600;
+    justify-content: space-around;
+    text-align:center;
+    padding:10%;
+    padding-top:12%;
+}
+.search h2{
+    color:#333;
+    font-family:"pierSans bold";
+    font-size:3rem;
+}
+.input-group-addon{
+    width:15%;
+}
+#StatusSearch{
+    width:100%;
+    height:3rem;
+    /* background-color:#2e5bc2; */
+    /* background-color:#007765; */
+    background-color:#3E2723;
+    padding:1%;
+    padding-left:10%;
+    padding-right:10%;
+    font-family:"pierSans bold";
+    color:#fff;
+    text-align:center;
+    display:flex;
+    vertical-align:middle;
+    justify-content: space-around;
+}
+#displayPeople{
+    width:100%;
+    height:100%;
+    /* background:green; */
+    padding:20%;
+    padding-top:5%;
+}
+.person{
+    width:100%;
+    background-color:#fff;
+    border-radius:20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top:2%;
+    margin-bottom:2%;
+    padding:2%;
+}
+.contP{
+    width:95%;
+}
+.person .dataPerson{
+    width:60%;
+}
+.person .fotoPerson{
+    width:40%;
+}
+.dataPerson p span, .dataPerson h4 span{
+    font-family:"pierSans black";
+    font-size:0.8rem;
+    color:#888;
+}
+.fotoPerson .contFoto{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    /* background:#aaa; */
+    padding:3%;
+    padding-top:5%;
+    padding-bottom:5%;
+}
+.fotoPerson .contFoto img{
+    width:20vh;
+    height:20vh;
+    border-radius:50%;
+}
+@media screen and (max-width: 800px){
+    .search{
+        height:25vh;
+    }
+    .fotoPerson .contFoto img{
+        width:16vh;
+        height:16vh;
+    }
+}
+@media screen and (max-width: 600px){
+    .search{
+        height:40vh;
+        padding-top:30%;
+    }
+    #displayPeople{
+        padding:5%;
+        padding-top:5%;
+    }
+    .fotoPerson .contFoto img{
+        width:13vh;
+        height:13vh;
+    }
+}
+.card-img-top{
+    width:100%;
+    height:230px;
+}
+.row .card .btn{
+    padding-top:0px;
+    padding-bottom:0px;
+}
+.swiper-pagination{
+    bottom:5px;
+}
+/* .swiper-slide{
+    width:220px;
+} */

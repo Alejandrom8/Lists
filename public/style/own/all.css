@@ -1,4 +1,8 @@
 @import "fuentes.css";
+:root{
+    --main-anfree:  #6200ee ;
+    --tools-height: 40px;
+}
 *{margin:0;padding:0;}
 .webpage{width:100%;display:block;}
 a:hover{
@@ -141,4 +145,10 @@ a:hover{
     box-shadow:#065efe 1px 2px 7px;
     color:#000;
     transition:all 0.2s;
+}
+.swal-button--confirm{
+    background-color:#065efe;
+}
+.swal-button--cancel{
+    background-color:tomato;
 }

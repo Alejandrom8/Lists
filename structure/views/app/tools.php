@@ -3,23 +3,18 @@
         <div style="width:60%;">
             <section class="show-data">
                 <div class="row">
-                    <div class="foto-cont">
-                        <img src="<?php echo $_SESSION['user_foto'];?>" alt="user foto" class="foto">
-                    </div>
-                    <div class="nombre">
-                        <?php echo $_SESSION['nombre']; ?>
-                    </div>
+                    <input type="text" id="buscador" name="buscador" class="form-control" placeholder="Busca algun proyecto" maxlength="100">
                 </div>
             </section>
         </div>
         <div style="width:40%;">
             <section class="tools">
-                    <div id="searchFriends" class="input-group" style="background:#ddd;border-radius:25px;">
-					    <span class="input-group-addon" style="display:flex;justify-content:space-around;align-items:center;"><i class="fas fa-search fa-2x" aria-hidden="true"></i></span>
-						<input type='text' class="form-control" id="consulta" placeholder="Buscar amigos" maxlength="50">
-					</div>
                     <i id="message-button" class="fas fa-comments fa-2x fa-lg" title="mensajes"></i>
+                    <i id="notification-button" class="fas fa-envelope fa-2x fa-lg" title="notificaciónes"></i>
                     <i id="tools-button" class="far fa-caret-square-left fa-2x fa-lg" title="menú"></i>
+                    <div class="foto-cont">
+                        <img src="<?php echo $_SESSION['user_foto'];?>" alt="user foto" class="foto">
+                    </div>
             </section>
         </div>
     </div>
@@ -52,7 +47,7 @@
                     Configuración
                 </td>
             </tr>
-            <tr class="boton-menu-tools" data-href="<?php echo constant('URL'); ?>salir/saliendo">
+            <tr class="boton-menu-tools" data-href="<?php echo constant('URL'); ?>salir/saliendo" >
                 <td class="salir">
                     <i class="fas fa-sign-out-alt"></i> 
                     Salir
@@ -60,6 +55,11 @@
             </tr>
         </table>
     </div>
+    <div id="notifications">
+        <ul id="displayNotifi" class="list-group">
+        </ul>
+    </div>
+    
     <?php include_once "message.php";?>
 </div>
 <script>
@@ -69,13 +69,32 @@
             if(!flag2){
                 $(this).removeClass("fa-caret-square-left").addClass("fa-caret-square-right");
                 $("#tools.toggle-menu").css({"right": "0"});
+                $(this).css("color", "#999");
                 flag2 = true;
             }else{
                 $(this).removeClass("fa-caret-square-right").addClass("fa-caret-square-left");
                 $("#tools.toggle-menu").css({"right": "-100vh"});
+                $(this).css("color", "#eee");
                 flag2 = false;
             }
         });
+
+        function refreshNotifi(){
+            $.ajax({
+                url: URLConst + "home/getNotifications",
+                dataType: "HTML",
+                success: (data) =>{
+                    $("#displayNotifi").html(data);
+                    setTimeout(() => {
+                        refreshNotifi();
+                    }, 60000);
+                },
+                error: () => {
+                    console.log("No se logragon cargar las notificacónes");
+                }
+            });
+        }
+        refreshNotifi();
     });
 
     const trs = document.querySelectorAll(".boton-menu-tools");
@@ -84,5 +103,18 @@
             const link = this.dataset.href;
             window.location = link;
         });
+    });
+
+    let flag3 = false;
+        $("#notification-button").on("click", function(){
+            if(!flag3){
+                $("#notifications").css("display", "block");
+                $(this).css("color", "#999");
+                flag3 = true;
+            }else{
+                $("#notifications").css("display", "none");
+                $(this).css("color", "#eee");
+                flag3 = false;
+            }
     });
 </script>

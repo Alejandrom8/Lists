@@ -145,7 +145,7 @@ class record extends Controller implements Render{
 
                             $estado = true;
                             $mensaje = "Registro Exitoso!, Bienvenid" . $letra;
-                            $url = constant('URL') . 'home/getData';
+                            $url = constant('URL') . 'home/getUserData';
                             $status = [$estado, $mensaje, $url];
                             
                             $this->iniciarSesion($registro->nombre, $registro->idanfree);

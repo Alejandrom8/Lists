@@ -2,13 +2,6 @@
 
 include_once("../models/modelResponse.php");
 
-class amigo{
-    public $id;
-    public $nombre;
-    public $foto;
-    public $mensajes;
-}
-
 class Home extends controller implements Render{
 
     protected $user;
@@ -21,6 +14,7 @@ class Home extends controller implements Render{
     public function render(){
         $this->view->render('home/index');
     }
+    
     public function social(){
         $this->view->render("home/social");
     }
@@ -56,16 +50,18 @@ class Home extends controller implements Render{
     }
 
     private static function UR_exists($url){
-        $headers=get_headers($url);
-        return stripos($headers[0],"200 OK")?true:false;
+        $headers = get_headers($url);
+        return stripos($headers[0],"200 OK");
     }
 
     public function getRelationDataFirst () {
+        
         $respuesta = new ServiceResult();
         $first = $this->model->getFirstRelation($this->user);
         $respuesta->success = $first->success;
         $respuesta->errors  = $first->errors;
         $respuesta->data    = $first->data;
+
         if($respuesta->success){
             echo $respuesta->data;
         }else{
@@ -77,7 +73,7 @@ class Home extends controller implements Render{
 
         $respuesta = new ServiceResult();
 
-        $relaciones_consult = $this->model->getAllData(
+        $relaciones_consult = $this->model->getAllRelations(
             "relacion",
             "relaciones",
             "idanfree",
@@ -173,6 +169,156 @@ class Home extends controller implements Render{
         if($getmensajes->success){
             echo json_encode($getmensajes->data);
         }
+
+    }
+
+    public function search(){
+        if(!empty($_GET)){
+            $searched = $this->desinfect($_GET['search']);
+            $counted = explode(" ", trim($searched));
+            $sendSearch = $this->model->searchWords($searched, count($counted));
+
+            $res = new ServiceResult();
+            $s = $res->success = $sendSearch->success;
+            $e = $res->errors  = $sendSearch->errors;
+            $d = $sendSearch->data;
+
+            if($s){
+                if($d != null and count($d) > 0){
+                    $res->data = $d;
+                }else{
+                    $res->message = "No hay resultados que coincidan con la busqueda";
+                }
+            }
+
+            echo json_encode($res);
+        }
+    }
+
+    public function registRelation(){
+        $id = $this->desinfect($_POST['id']);
+        $this->model->createRelation($id);
+    }
+
+    public function registPetition(){
+
+        $res = new ServiceResult();
+
+        $id = $this->desinfect($_POST['id']);
+        $fecha = strftime("%y-%m-%d %H:%M");
+        $r = $this->model->createPetitionRelation($id, $fecha);
+
+        if($r->success){
+            $res->success = true;
+            $res->errors = 0;
+        }else{
+           $res->success = false;
+           $res->errors = 0;
+
+           switch($r->errors){
+               case 1: 
+                    $res->message = ["title" => "Ya se lo pediste", "text" => "Ya se ha enviado previamente una solicitud a "];
+                    $res->onErrorEvent = "warning";
+                    break;
+                case 2: 
+                    $res->message = ["title" => "Error", "text" => "No logro enviarse la solicitud a "];
+                    $res->onErrorEvent = "error";
+                    break;
+                case 3:
+                    $res->message = ["title" => "Wow", "text" => "Ya tienes una solicitud en la seccion de notificaciónes de "];
+                    $res->onErrorEvent = "info";
+                    break;
+                case 4:
+                    $res->message = ["title" => "Wow", "text" => "Ya eres amig@ de "];
+                    $res->onErrorEvent = "info";
+                    break;
+                default:
+                    $res->errors = 1;
+                    $res->message = $r->errors;
+                    break;
+           }
+        }
+
+        echo json_encode($res);
+    }
+
+    public function getpetitions(){
+        echo json_encode($this->model->getPetitions());
+    }
+
+    public function aceptPetition(){
+        $id = $this->desinfect($_POST['id']);
+        $res = $this->model->aceptPetition($id);
+        echo json_encode($res);
+    }
+
+    public function deletePetition(){
+        $id = $this->desinfect($_POST['id']);
+        $res = $this->model->deletePetition($id);
+        echo json_encode($res);
+    }
+
+    public function getNotifications(){
+        $noti = $this->model->getNotificationsData();
+        if($noti->success){
+            $display = "";
+            foreach($noti->data as $notifi){
+                $display .= "<li class='list-group-item'>
+                                <h5>$notifi->asunto</h5>
+                                <p>$notifi->mensaje<p>
+                                <p>$notifi->fecha</p>
+                            </li>";
+            }
+            echo $display;
+        }else{ 
+            echo $noti->errors;
+        }
+    }
+
+    public function getProyects(){
+        $data = $this->model->getProyectsModel();
+        echo json_encode($data);
+    }
+
+    public function getProyectId(){
+        $num1 = rand(0,9);
+        $num2 = rand(0,9);
+        $num3 = rand(0,9);
+        $num4 = rand(0,9);
+
+        return $num1 . $num2 . $num3 . $num4;
+    }
+    
+    public function new_proyect(){
+        $proyecto = new Proyecto();
+
+        $proyecto->owner         = $_SESSION['idanfree'];
+        $proyecto->name          = $this->desinfect($_POST['NombreDelProyecto']);
+        $proyecto->proyectID     = $_SESSION['idanfree'] . '-p-' . $this->getProyectId();
+        $proyecto->description   = $this->desinfect($_POST['description']);
+        $proyecto->start         = $this->desinfect($_POST['fecha-desde']);
+        $proyecto->end           = $this->desinfect($_POST['fecha-hasta']);
+        $proyecto->color         = $this->desinfect($_POST['color']);
+        $proyecto->creationDate  = strftime("%y-%m-%d %H:%M");
+        $proyecto->completed = 0;
+
+        $res = new ServiceResult();
+
+        $save = $this->model->saveProyect($proyecto);
+
+        if($save->success){
+            $res->success = true;
+            $res->onSuccessEvent = constant('URL') . 'proyects/getProyectById/' . $proyecto->proyectID;
+        }else{
+            $res->success = false;
+            if($success->errors == 1){
+                $res->message = "Ya tienes demasiados proyectos (50)";
+            }else{
+                $res->errors = $save->errors;
+            }
+        }
+
+        echo json_encode($res);
 
     }
 }

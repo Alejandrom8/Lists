@@ -11,8 +11,6 @@ define('PASSWORD', 'Alejandrom8');
 define('HOST', 'localhost');
 define('DB', 'users');
 define('CHARSET', 'utf8');
-define('MAX_FOTO_SIZE', 50000000);//6.25 MB
-
 //TABLAS
 define('TABLA_REGISTRO', 'registros');
 //carpeta donde se guardaran las fotos
@@ -21,4 +19,7 @@ define('URL_FOTOS', constant('LOCAL') . "intranet/uploads/");
 define('CARPETA_MENSAJES', $_SERVER['DOCUMENT_ROOT'] . '/intranet/mensajes/');
 //constantes visibles
 define('DEFAULT_FOTO', constant("LOCAL") ."intranet/uploads/porfile-default.png");
+//Cantidades
+define('MAX_FOTO_SIZE', 50000000);//6.25 MB
+define('MAX_SEARCH_RESULTS', 40);
 ?>
