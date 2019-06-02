@@ -1,17 +1,17 @@
 <div class="menu-tools" id="menu-tools">
     <div class="menu-tools-cont"> 
-        <div style="width:60%;">
+        <div style="width:70%;">
             <section class="show-data">
                 <div class="row">
                     <input type="text" id="buscador" name="buscador" class="form-control" placeholder="Busca algun proyecto" maxlength="100">
                 </div>
             </section>
         </div>
-        <div style="width:40%;">
+        <div style="width:30%;">
             <section class="tools">
-                    <i id="message-button" class="fas fa-comments fa-2x fa-lg" title="mensajes"></i>
-                    <i id="notification-button" class="fas fa-envelope fa-2x fa-lg" title="notificaciónes"></i>
-                    <i id="tools-button" class="far fa-caret-square-left fa-2x fa-lg" title="menú"></i>
+                    <i id="message-button" class="fas fa-comments fa-lg" title="mensajes"></i>
+                    <i id="notification-button" class="fas fa-envelope fa-lg" title="notificaciónes"></i>
+                    <i id="tools-button" class="far fa-caret-square-left fa-lg" title="menú"></i>
                     <div class="foto-cont">
                         <img src="<?php echo $_SESSION['user_foto'];?>" alt="user foto" class="foto">
                     </div>
