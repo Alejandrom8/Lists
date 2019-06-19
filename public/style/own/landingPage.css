@@ -25,12 +25,12 @@
     text-align: center;
 }
 .anuncio h1{
-    font-family: 'pierSans bold';
+    font-family: 'OpenSans bold';
     font-size:5rem;
     font-weight:bold;
     /* color:#333; */
 }
-.anuncio p{font-family:'pierSans';font-size:1.2rem;}
+.anuncio p{font-family:'OpenSans';font-size:1.1rem;}
 .slider .row .col-sm-1{display:flex;align-items:center;}
 .boton-slider{
     margin:0 auto;
@@ -64,7 +64,7 @@
 .after.T{
 	padding:15%;
 	color:#333;
-	font-family:'pierSans';
+	font-family:'OpenSans';
 	text-align:center;
 	line-height:2rem;
 }

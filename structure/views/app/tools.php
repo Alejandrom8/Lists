@@ -3,6 +3,7 @@
         <div style="width:70%;">
             <section class="show-data">
                 <div class="row">
+                    <img class="logo" src="<?php echo constant('URL'); ?>public/img/av2.png">
                     <input type="text" id="buscador" name="buscador" class="form-control" placeholder="Busca algun proyecto" maxlength="100">
                 </div>
             </section>
@@ -97,24 +98,35 @@
         refreshNotifi();
     });
 
+    let url = window.location;
+    function canIChangeTheURL(link){
+        if(url != link){
+            window.location = link;
+        }else{
+            return false;
+        }
+    }
+
     const trs = document.querySelectorAll(".boton-menu-tools");
     trs.forEach(tr =>{
         tr.addEventListener("click", function(){
             const link = this.dataset.href;
-            window.location = link;
+            if(canIChangeTheURL(link)){
+                window.location = link;
+            }
         });
     });
 
     let flag3 = false;
-        $("#notification-button").on("click", function(){
-            if(!flag3){
-                $("#notifications").css("display", "block");
-                $(this).css("color", "#999");
-                flag3 = true;
-            }else{
-                $("#notifications").css("display", "none");
-                $(this).css("color", "#eee");
-                flag3 = false;
-            }
+    $("#notification-button").on("click", function(){
+        if(!flag3){
+            $("#notifications").css("display", "block");
+            $(this).css("color", "#999");
+            flag3 = true;
+        }else{
+            $("#notifications").css("display", "none");
+            $(this).css("color", "#eee");
+            flag3 = false;
+        }
     });
 </script>

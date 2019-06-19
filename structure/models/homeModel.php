@@ -430,7 +430,8 @@ class HomeModel extends Model{
 
             if($execSql->rowCount() <= 50){
 
-                $insert = "INSERT INTO proyectos(id,idanfree,proyectid,nombre,descripcion,fecha_inicio,fecha_termino,color,fecha_creacion,terminado) VALUE(0,'$pt->owner','$pt->proyectID','$pt->name','$pt->description','$pt->start','$pt->end','$pt->color','$pt->creationDate','$pt->completed')";
+                $insert = "INSERT INTO proyectos(id,idanfree,colaboradores,proyectid,nombre,descripcion,fecha_inicio,fecha_termino,color,fecha_creacion,terminado) 
+                           VALUE(0,'$pt->owner','$pt->colab','$pt->proyectID','$pt->name','$pt->description','$pt->start','$pt->end','$pt->color','$pt->creationDate','$pt->completed')";
                 $execInsert = $this->con->prepare($insert);
                 $execInsert->execute();
 
@@ -441,6 +442,23 @@ class HomeModel extends Model{
                 $res->errors = 1;
             }
 
+        }catch(PDOException $e){
+            $res->success = false;
+            $res->errors = $e;
+        }finally{
+            return $res;
+        }
+    }
+
+    public function deleteProyect($id){
+        $res = new ServiceResult();
+        try{
+            $sql = "DELETE FROM proyectos WHERE idanfree = :user AND proyectid = :id";
+            $e = $this->con->prepare($sql);
+            $e->bindValue(":user", $this->user);
+            $e->bindParam(":id", $id);
+            $e->execute();
+            $res->success = true;
         }catch(PDOException $e){
             $res->success = false;
             $res->errors = $e;

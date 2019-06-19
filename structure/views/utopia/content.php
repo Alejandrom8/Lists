@@ -4,13 +4,13 @@ let contenido = {
     0:{
         "titulo": {
             font_size: 20,
-            font_color: "#fff",
+            font_color: "#333",
             texto: "ANFREE"
         },
         "texto": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ac arcu et purus pulvinar malesuada. Cras at urna vel sem pretium sollicitudin vitae quis justo.</p><p>- o -</p><p><button class='btn-pretty'>Más información</button></p>",
         "background" : {
-            image: carpetaImg + "f5.jpg",
-            color: "#222"
+            image: null,
+            color: "#fff"
         }
     },
     1:{

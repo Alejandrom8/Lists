@@ -300,7 +300,8 @@ class Home extends controller implements Render{
         $proyecto->end           = $this->desinfect($_POST['fecha-hasta']);
         $proyecto->color         = $this->desinfect($_POST['color']);
         $proyecto->creationDate  = strftime("%y-%m-%d %H:%M");
-        $proyecto->completed = 0;
+        $proyecto->completed     = 0;
+        $proyecto->colab         = $this->desinfect($_POST['colaboradores']);
 
         $res = new ServiceResult();
 
@@ -319,7 +320,14 @@ class Home extends controller implements Render{
         }
 
         echo json_encode($res);
+    }
 
+    public function deleteProyect(){
+        $res = new ServiceResult();
+        $id = $this->desinfect($_GET['id']);
+        $estado = $this->model->deleteProyect($id);
+        $res->success = true;
+        echo json_encode($res);
     }
 }
 

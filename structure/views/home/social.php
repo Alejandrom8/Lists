@@ -12,9 +12,6 @@
         <?php include_once 'structure/views/app/tools.php'; ?>
         <div class="container-own" style="height:100vh;background:#eee;overflow-y:scroll;">
             <div id="social-head">
-            <h1>Sección social</h1>
-                <header id="social-header">
-                </header>
                 <section id="menu-social">
                     <ul class="nav nav-tabs nav-justified">
                         <li id="s-s-l" class="nav-item" data-where="search" style="background:#ffdd7e;">

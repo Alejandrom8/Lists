@@ -3,8 +3,8 @@
         <div class="row">
             <div class="bloque left">
                 <ul>
-                    <li><img src="<?php echo constant('URL'); ?>public/img/a.png"></li>
-                    <li><a href="#">ANFREE</a></li>
+                    <li><img class="logo" src="<?php echo constant('URL'); ?>public/img/av2.png"></li>
+                    <li><a href="#"><b>ANFREE</b></a></li>
                 </ul>
             </div>
             <div class="bloque right">

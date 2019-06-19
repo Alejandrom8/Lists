@@ -45,6 +45,7 @@ class Proyecto{
     public $color;
     public $tasks;
     public $targets;
+    public $colab;
 
     // public function __construct(){
 

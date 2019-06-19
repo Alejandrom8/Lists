@@ -49,5 +49,12 @@
     src: url('../../tipography/PierSans/PierSans-Black.otf');
     font-family: 'pierSans black';
 }
-
+@font-face{
+    src: url(../../tipography/Open_Sans/OpenSans-Regular.ttf);
+    font-family:"OpenSans";
+}
+@font-face{
+    src:url(../../tipography/Open_Sans/OpenSans-Bold.ttf);
+    font-family:"OpenSans bold";
+}
 

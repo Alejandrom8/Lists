@@ -13,32 +13,37 @@
                 <div class="inside-login">
                     <div class="cont">
                         <div class="col-sm-12">
+                            <center>
+                            <img class="logo" src="<?php echo constant("URL"); ?>public/img/av2.png">
                             <h2>Login</h2>
-                        </div>
-                        <br>
-                        <div class="col-sm-12">
-                            <form id="login" class="form" name="login" method="POST" action="<?php echo constant('URL'); ?>login/logear">
-                                <div class="form-group">
-                                    <label for="nombre-correo">Nombre o email</label>
-                                    <input type="text" name="nombre-correo" id="nombre-correo" class="form-control" placeholder="introduce tu nombre o email">
-                                </div>
-                                <div class="form-group">
-                                    <label for="pass">Contraseña</label>
-                                    <input type="password" name="pass" id="pass" class="form-control">
-                                </div>
-                                <br>
-                                <center><input type="submit" name="send" id="send" class="btn btn-primary" value="Entrar"></center>
-                            </form>
+                            </center>
                         </div>
                         <div class="col-sm-12" id="debug">
                             <!-- errors -->
+                        </div>
+                        <div class="col-sm-12">
+                            <form id="login" class="form" name="login" method="POST" action="<?php echo constant('URL'); ?>login/logear">
+                                <div class="form-group">
+                                    <label for="nombre-correo">Ingresa tu dirección de correo electrónico o tu nombre</label>
+                                    <input type="text" name="nombre-correo" autocomplete="username" 
+                                    spellcheck="false" aria-label="Nombre o email" id="nombre-correo" 
+                                    class="form-control" placeholder="Correo electrónico o nombre" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="pass">Contraseña</label>
+                                    <input type="password" name="pass" id="pass" autocomplete="password"
+                                    spellcheck="false" class="form-control" placeholder="Contraseña" required>
+                                </div>
+                                <br>
+                                <center><input type="submit" name="send" id="send" class="btn btn-primary" value="Entrar" style="width:90%"></center>
+                            </form>
                         </div>
                     </div>
                 </div>
             </section>
         </div>
-        <?php include_once 'structure/views/footer.php';?>
+        <?php include_once 'structure/views/footer.php'; ?>
     </div>
 </body>
-<script src="<?php echo constant('URL')?>public/loginAjax.js"></script>
+<script src="<?php echo constant('URL'); ?>public/loginAjax.js"></script>
 </html>

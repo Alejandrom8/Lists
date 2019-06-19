@@ -1,6 +1,9 @@
 @import "fuentes.css";
 :root{
-    --main-anfree:  #6200ee ;
+    /* --main-anfree:  #6200ee ; morado*/
+    /* --main-anfree:#3b3561;  */
+    /* --main-anfree:#453a49; */
+    --main-anfree:#541388;
     --tools-height: 40px;
 }
 *{margin:0;padding:0;}
@@ -16,12 +19,17 @@ a:hover{
     align-items:center;
     z-index:100;
     transition: all 0.5s;
-    background: #333;
+    background:rgb(98, 68, 122);
     -webkit-transition:all 0.5s;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 9px 0px;
+    -moz-box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 9px 0px;
+    box-shadow:rgba(0, 0, 0, 0.2) 0px 3px 9px 0px;
 }
 .container-own{
-    opacity: 1;
+    width:100%;
+    height:auto;
     transition: all 0.3s;
+    padding-top:var(--tools-height);
     -webkit-transition:all 0.3s;
 }
 #menu .nav-menu{
@@ -37,7 +45,7 @@ a:hover{
 #menu .nav-menu .row .bloque{
     width:50%;
     height:100%;
-    font-family:'pierSans';
+    font-family:'roboto';
 }
 #menu .nav-menu .row .bloque ul{
     height:100%;
@@ -61,10 +69,13 @@ a:hover{
     margin-left:2%;
     margin-right: 2%;
 }
-.left ul li img{
-    padding:5px;
-    width:40px;
-    height: 40px;
+.logo{
+    margin:5px;
+    margin-left:1rem;
+    width:35px;
+    height: 32px;
+    /* background:#fff; */
+    border-radius:50%;
 }
 .right ul li{
     width:25%;
@@ -127,7 +138,7 @@ a:hover{
     }
 }
 .btn{
-    border-radius:25px;
+    border-radius:5px;
     text-align: center;
     font-weight:bold;
 }

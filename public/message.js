@@ -6,9 +6,9 @@ const input = $("#message_input");
 const displayNameFriend = $("#friend-box");
 let loop, flag = false, cantM = 0;
 
-function AppMessage(url = URLConst) {
+function AppMessage (url = URLConst) {
 
-    function httpRequest(ide, url, data, dt, callback) {
+    function httpRequest (ide, url, data, dt, callback) {
         /*
          *   This func is the worker that makes all the sends to the server
          *   @param Integer ide, the id of the function in the line-process, this help us to have more control of where aperes a problem.
@@ -37,7 +37,7 @@ function AppMessage(url = URLConst) {
         });
     };
 
-    let play = (friend) => {
+    let play = friend => {
 
         /*
          *   This is the initializer of all the process of get data in a time loop,
@@ -106,20 +106,20 @@ function AppMessage(url = URLConst) {
         return true;
     };
 
-    let init = (i) => {
+    let init = i => {
         clearInterval(loop);
         loop = setInterval(function() {
             continueRe(i);
         }, 1000);
     };
 
-    let continueRe = (id) => {
+    let continueRe = id => {
         httpRequest(3, url + "home/getUserRelationMessage", { amigo: id }, "JSON", function(a) {
             format(a);
         });
     };
 
-    let loadOtherFriends = async(other) => {
+    let loadOtherFriends = async other => {
         displayFotoFriend.empty();
         for (let i = 0; i < Object.keys(other).length; i++) {
             // displayNameFriend.html("<p>" + friend.nombre + "</p>");
@@ -171,7 +171,7 @@ function AppMessage(url = URLConst) {
 
         if (status) {
             if (Object.keys(data).length > 0) {
-                if (play(data[0])) { //se ejecuta esta funcio asincrona para cargar fotos id y nombres
+                if (play(data[0])) { //se ejecuta esta funcion asincrona para cargar fotos, id y nombres
                     if (loadOtherFriends(data)) {
                         createEventClickForFriendsFoto();
                     }

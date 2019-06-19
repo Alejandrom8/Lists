@@ -29,10 +29,19 @@ $(document).ready(function(){
 
                     if(estado){
                         let where = datos[2];
-                        window.alert(mensaje);
+                        swal({
+                            title: "Registro Exitoso",
+                            text: mensaje,
+                            icon: "success",
+                            button: ":)"
+                        });
                         window.location = where;
                     }else{
-                        window.alert(mensaje);
+                        swal({
+                            text:mensaje,
+                            icon:"warning",
+                            button: "ok"
+                        });
                     }
                 },
                 error: function(){

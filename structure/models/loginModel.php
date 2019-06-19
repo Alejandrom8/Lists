@@ -1,10 +1,12 @@
 <?php 
 
 class LoginModel extends Model{
+
     public function __construct(){
         parent::__construct();
         $this->con = $this->conection->Connect();
     }
+    
     public function validarNC($nc, $pass){
         try{
             $usuario = null;
@@ -22,10 +24,12 @@ class LoginModel extends Model{
                 if($pass == $pre){
                     return [true, "", [$nombre,$id]];
                 }else{
-                    return [false, "Usuario o contraseña incorrecto"];
+                    //contraseña incorrecta
+                    return [false, "Contraseña incorrecta"];
                 }
             }else{
-                return [false, "Usuario o contraseña incorrecto"];
+                //El usuario no existe
+                return [false, "No hemos encontrado tu cuenta"];
             }
 
         }catch(PDOException $e){
